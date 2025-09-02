@@ -1,0 +1,326 @@
+/* aashdit-css-lib.css - v1.0.1 */
+
+/* ------------------ ROOT VARIABLES ------------------ */
+:root {
+  /* Primary */
+  --color-primary: #1976d2;
+  --color-primary-hover: #1565c0;
+  --color-primary-active: #0d47a1;
+
+  /* Secondary */
+  --color-secondary: #9c27b0;
+  --color-secondary-hover: #7b1fa2;
+  --color-secondary-active: #4a148c;
+
+  /* Success */
+  --color-success: #2e7d32;
+  --color-success-hover: #1b5e20;
+  --color-success-active: #0d3b12;
+
+  /* Danger */
+  --color-danger: #d32f2f;
+  --color-danger-hover: #b71c1c;
+  --color-danger-active: #7f0000;
+
+  /* Warning */
+  --color-warning: #ed6c02;
+  --color-warning-hover: #e65100;
+  --color-warning-active: #bf360c;
+
+  /* Info */
+  --color-info: #0288d1;
+  --color-info-hover: #0277bd;
+  --color-info-active: #01579b;
+
+  /* Light */
+  --color-light: #f5f5f5;
+  --color-light-hover: #e0e0e0;
+  --color-light-active: #bdbdbd;
+
+  /* Dark */
+  --color-dark: #212121;
+  --color-dark-hover: #000000;
+  --color-dark-active: #000000;
+
+  /* Common */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Sizes */
+  --btn-font-size: 0.95rem;
+  --btn-font-weight: 500;
+  --btn-border-radius: 4px;
+  --btn-padding-y: 0.5rem;
+  --btn-padding-x: 1.25rem;
+}
+
+/* ------------------ RESET ------------------ */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  color: #333;
+  background: #fff;
+}
+img { max-width: 100%; display: block; }
+
+/* ===============================
+   Grid System (12 Columns)
+   =============================== */
+
+/* Row Wrapper */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+}
+
+/* Column Base */
+[class^="col-"], [class*=" col-"] {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  box-sizing: border-box;
+}
+
+/* 12 Column System */
+.col-1  { flex: 0 0 8.333%;   max-width: 8.333%; }
+.col-2  { flex: 0 0 16.666%;  max-width: 16.666%; }
+.col-3  { flex: 0 0 25%;      max-width: 25%; }
+.col-4  { flex: 0 0 33.333%;  max-width: 33.333%; }
+.col-5  { flex: 0 0 41.666%;  max-width: 41.666%; }
+.col-6  { flex: 0 0 50%;      max-width: 50%; }
+.col-7  { flex: 0 0 58.333%;  max-width: 58.333%; }
+.col-8  { flex: 0 0 66.666%;  max-width: 66.666%; }
+.col-9  { flex: 0 0 75%;      max-width: 75%; }
+.col-10 { flex: 0 0 83.333%;  max-width: 83.333%; }
+.col-11 { flex: 0 0 91.666%;  max-width: 91.666%; }
+.col-12 { flex: 0 0 100%;     max-width: 100%; }
+
+/* Auto-width column */
+.col { flex: 1 1 0; }
+
+/* ===============================
+   Responsive Breakpoints
+   (xs, sm, md, lg, xl)
+   =============================== */
+
+/* Small (≥576px) */
+@media (min-width: 576px) {
+  .col-sm-1  { flex: 0 0 8.333%; max-width: 8.333%; }
+  .col-sm-2  { flex: 0 0 16.666%; max-width: 16.666%; }
+  .col-sm-3  { flex: 0 0 25%; max-width: 25%; }
+  .col-sm-4  { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-sm-5  { flex: 0 0 41.666%; max-width: 41.666%; }
+  .col-sm-6  { flex: 0 0 50%; max-width: 50%; }
+  .col-sm-7  { flex: 0 0 58.333%; max-width: 58.333%; }
+  .col-sm-8  { flex: 0 0 66.666%; max-width: 66.666%; }
+  .col-sm-9  { flex: 0 0 75%; max-width: 75%; }
+  .col-sm-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+  .col-sm-11 { flex: 0 0 91.666%; max-width: 91.666%; }
+  .col-sm-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* Medium (≥768px) */
+@media (min-width: 768px) {
+  .col-md-1  { flex: 0 0 8.333%; max-width: 8.333%; }
+  .col-md-2  { flex: 0 0 16.666%; max-width: 16.666%; }
+  .col-md-3  { flex: 0 0 25%; max-width: 25%; }
+  .col-md-4  { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-md-5  { flex: 0 0 41.666%; max-width: 41.666%; }
+  .col-md-6  { flex: 0 0 50%; max-width: 50%; }
+  .col-md-7  { flex: 0 0 58.333%; max-width: 58.333%; }
+  .col-md-8  { flex: 0 0 66.666%; max-width: 66.666%; }
+  .col-md-9  { flex: 0 0 75%; max-width: 75%; }
+  .col-md-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+  .col-md-11 { flex: 0 0 91.666%; max-width: 91.666%; }
+  .col-md-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* Large (≥992px) */
+@media (min-width: 992px) {
+  .col-lg-1  { flex: 0 0 8.333%; max-width: 8.333%; }
+  .col-lg-2  { flex: 0 0 16.666%; max-width: 16.666%; }
+  .col-lg-3  { flex: 0 0 25%; max-width: 25%; }
+  .col-lg-4  { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-lg-5  { flex: 0 0 41.666%; max-width: 41.666%; }
+  .col-lg-6  { flex: 0 0 50%; max-width: 50%; }
+  .col-lg-7  { flex: 0 0 58.333%; max-width: 58.333%; }
+  .col-lg-8  { flex: 0 0 66.666%; max-width: 66.666%; }
+  .col-lg-9  { flex: 0 0 75%; max-width: 75%; }
+  .col-lg-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+  .col-lg-11 { flex: 0 0 91.666%; max-width: 91.666%; }
+  .col-lg-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* Extra Large (≥1200px) */
+@media (min-width: 1200px) {
+  .col-xl-1  { flex: 0 0 8.333%; max-width: 8.333%; }
+  .col-xl-2  { flex: 0 0 16.666%; max-width: 16.666%; }
+  .col-xl-3  { flex: 0 0 25%; max-width: 25%; }
+  .col-xl-4  { flex: 0 0 33.333%; max-width: 33.333%; }
+  .col-xl-5  { flex: 0 0 41.666%; max-width: 41.666%; }
+  .col-xl-6  { flex: 0 0 50%; max-width: 50%; }
+  .col-xl-7  { flex: 0 0 58.333%; max-width: 58.333%; }
+  .col-xl-8  { flex: 0 0 66.666%; max-width: 66.666%; }
+  .col-xl-9  { flex: 0 0 75%; max-width: 75%; }
+  .col-xl-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+  .col-xl-11 { flex: 0 0 91.666%; max-width: 91.666%; }
+  .col-xl-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* ===============================
+   Extra Grid Utilities
+   =============================== */
+
+/* Gutters */
+.g-0  > [class^="col-"] { padding: 0; }
+.g-1  > [class^="col-"] { padding: 0.25rem; }
+.g-2  > [class^="col-"] { padding: 0.5rem; }
+.g-3  > [class^="col-"] { padding: 1rem; }
+.g-4  > [class^="col-"] { padding: 1.5rem; }
+.g-5  > [class^="col-"] { padding: 3rem; }
+
+/* Alignment */
+.justify-start   { justify-content: flex-start; }
+.justify-center  { justify-content: center; }
+.justify-end     { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+.justify-around  { justify-content: space-around; }
+
+.align-start  { align-items: flex-start; }
+.align-center { align-items: center; }
+.align-end    { align-items: flex-end; }
+
+/* Equal Height Rows */
+.row.equal { align-items: stretch; }
+/* ===============================
+   Button Styles
+   =============================== */
+
+
+
+/* ------------------ BASE BUTTON ------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  border-radius: var(--btn-border-radius);
+  border: none;
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  outline: none;
+  text-decoration: none;
+  user-select: none;
+}
+
+.btn:active { transform: scale(0.97); }
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ------------------ SOLID BUTTONS ------------------ */
+.btn-primary { background: var(--color-primary); color: var(--color-white); }
+.btn-primary:hover { background: var(--color-primary-hover); }
+.btn-primary:active { background: var(--color-primary-active); }
+
+.btn-secondary { background: var(--color-secondary); color: var(--color-white); }
+.btn-secondary:hover { background: var(--color-secondary-hover); }
+.btn-secondary:active { background: var(--color-secondary-active); }
+
+.btn-success { background: var(--color-success); color: var(--color-white); }
+.btn-success:hover { background: var(--color-success-hover); }
+.btn-success:active { background: var(--color-success-active); }
+
+.btn-danger { background: var(--color-danger); color: var(--color-white); }
+.btn-danger:hover { background: var(--color-danger-hover); }
+.btn-danger:active { background: var(--color-danger-active); }
+
+.btn-warning { background: var(--color-warning); color: var(--color-white); }
+.btn-warning:hover { background: var(--color-warning-hover); }
+.btn-warning:active { background: var(--color-warning-active); }
+
+.btn-info { background: var(--color-info); color: var(--color-white); }
+.btn-info:hover { background: var(--color-info-hover); }
+.btn-info:active { background: var(--color-info-active); }
+
+.btn-light { background: var(--color-light); color: var(--color-black); }
+.btn-light:hover { background: var(--color-light-hover); }
+.btn-light:active { background: var(--color-light-active); }
+
+.btn-dark { background: var(--color-dark); color: var(--color-white); }
+.btn-dark:hover { background: var(--color-dark-hover); }
+.btn-dark:active { background: var(--color-dark-active); }
+
+/* ------------------ OUTLINED BUTTONS ------------------ */
+.btn-outlined {
+  background: transparent;
+  border: 2px solid currentColor;
+}
+
+.btn-primary.btn-outlined { color: var(--color-primary); border-color: var(--color-primary); }
+.btn-primary.btn-outlined:hover { background: color-mix(in srgb, var(--color-primary) 10%, transparent); }
+
+.btn-secondary.btn-outlined { color: var(--color-secondary); border-color: var(--color-secondary); }
+.btn-secondary.btn-outlined:hover { background: color-mix(in srgb, var(--color-secondary) 10%, transparent); }
+
+.btn-success.btn-outlined { color: var(--color-success); border-color: var(--color-success); }
+.btn-success.btn-outlined:hover { background: color-mix(in srgb, var(--color-success) 10%, transparent); }
+
+.btn-danger.btn-outlined { color: var(--color-danger); border-color: var(--color-danger); }
+.btn-danger.btn-outlined:hover { background: color-mix(in srgb, var(--color-danger) 10%, transparent); }
+
+.btn-warning.btn-outlined { color: var(--color-warning); border-color: var(--color-warning); }
+.btn-warning.btn-outlined:hover { background: color-mix(in srgb, var(--color-warning) 10%, transparent); }
+
+.btn-info.btn-outlined { color: var(--color-info); border-color: var(--color-info); }
+.btn-info.btn-outlined:hover { background: color-mix(in srgb, var(--color-info) 10%, transparent); }
+
+.btn-dark.btn-outlined { color: var(--color-dark); border-color: var(--color-dark); }
+.btn-dark.btn-outlined:hover { background: color-mix(in srgb, var(--color-dark) 10%, transparent); }
+
+/* ------------------ TEXT BUTTONS ------------------ */
+.btn-text {
+  background: transparent;
+  border: none;
+}
+
+.btn-primary.btn-text { color: var(--color-primary); }
+.btn-primary.btn-text:hover { background: color-mix(in srgb, var(--color-primary) 10%, transparent); }
+
+.btn-secondary.btn-text { color: var(--color-secondary); }
+.btn-secondary.btn-text:hover { background: color-mix(in srgb, var(--color-secondary) 10%, transparent); }
+
+.btn-success.btn-text { color: var(--color-success); }
+.btn-success.btn-text:hover { background: color-mix(in srgb, var(--color-success) 10%, transparent); }
+
+.btn-danger.btn-text { color: var(--color-danger); }
+.btn-danger.btn-text:hover { background: color-mix(in srgb, var(--color-danger) 10%, transparent); }
+
+.btn-warning.btn-text { color: var(--color-warning); }
+.btn-warning.btn-text:hover { background: color-mix(in srgb, var(--color-warning) 10%, transparent); }
+
+.btn-info.btn-text { color: var(--color-info); }
+.btn-info.btn-text:hover { background: color-mix(in srgb, var(--color-info) 10%, transparent); }
+
+.btn-dark.btn-text { color: var(--color-dark); }
+.btn-dark.btn-text:hover { background: color-mix(in srgb, var(--color-dark) 10%, transparent); }
+
+/* ------------------ SIZES ------------------ */
+.btn-sm {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+}
+.btn-lg {
+  padding: 0.75rem 1.75rem;
+  font-size: 1.1rem;
+}
