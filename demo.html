@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aash Modal Demo</title>
+  <style>
+    /* === Modal Library CSS === */
+    .aash-modal {
+      display: none; 
+      position: fixed; 
+      z-index: 1050; 
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+    }
+    .aash-modal.show { display: flex; }
+    .aash-modal-dialog {
+      background: #fff;
+      border-radius: 8px;
+      max-width: 400px;
+      width: 100%;
+      padding: 20px;
+      text-align: center;
+      animation: scaleIn 0.3s ease;
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .aash-modal h4 { margin: 15px 0 10px; }
+    .aash-modal p { margin: 10px 0 20px; font-size: 14px; color: #444; }
+    .aash-modal-footer { display: flex; justify-content: center; gap: 10px; }
+
+    /* Buttons */
+    .aash-btn { padding: 6px 16px; border-radius: 4px; font-size: 14px; cursor: pointer; border: none; }
+    .aash-btn-success { background: #2e7d32; color: #fff; }
+    .aash-btn-error   { background: #d32f2f; color: #fff; }
+    .aash-btn-warning { background: #ed6c02; color: #fff; }
+    .aash-btn-info    { background: #0288d1; color: #fff; }
+    .aash-btn-light   { background: #e0e0e0; color: #000; }
+
+    /* Status Colors */
+    .aash-modal-success h4 { color: #2e7d32; }
+    .aash-modal-error h4   { color: #d32f2f; }
+    .aash-modal-warning h4 { color: #ed6c02; }
+    .aash-modal-info h4    { color: #0288d1; }
+  </style>
+</head>
+<body>
+  <h2>Aash Modal Demo</h2>
+  <button onclick="openModal('successModal')" class="aash-btn aash-btn-success">Show Success</button>
+  <button onclick="openModal('errorModal')" class="aash-btn aash-btn-error">Show Error</button>
+  <button onclick="openModal('confirmModal')" class="aash-btn aash-btn-warning">Show Confirm</button>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="aash-modal aash-modal-success">
+    <div class="aash-modal-dialog">
+      <h4>Success!</h4>
+      <p>Your data was submitted successfully.</p>
+      <div class="aash-modal-footer">
+        <button class="aash-btn aash-btn-success" onclick="closeModal('successModal')">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error Modal -->
+  <div id="errorModal" class="aash-modal aash-modal-error">
+    <div class="aash-modal-dialog">
+      <h4>Error!</h4>
+      <p>Something went wrong, please try again.</p>
+      <div class="aash-modal-footer">
+        <button class="aash-btn aash-btn-error" onclick="closeModal('errorModal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirm Modal -->
+  <div id="confirmModal" class="aash-modal aash-modal-warning">
+    <div class="aash-modal-dialog">
+      <h4>Are you sure?</h4>
+      <p>Do you want to proceed?</p>
+      <div class="aash-modal-footer">
+        <button class="aash-btn aash-btn-light" onclick="closeModal('confirmModal')">Cancel</button>
+        <button class="aash-btn aash-btn-warning" onclick="confirmAction()">Yes</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).classList.add("show");
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove("show");
+    }
+    function confirmAction() {
+      closeModal("confirmModal");
+      openModal("successModal"); // Example: confirm leads to success
+    }
+  </script>
+</body>
+</html>

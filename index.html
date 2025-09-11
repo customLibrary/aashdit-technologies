@@ -4,19 +4,79 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
     <!-- <link rel="stylesheet" href="http://aashdit-lib.netlify.app/bundle.0c13b8315aa797e9f2b5.css" /> -->
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Aashdit-Technologies/aashdit-css-lib/aashdit.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Aashdit-Technologies/aashdit-css-lib/aashdit.min.css" /> -->
+    <link rel="stylesheet" href="/aashdit.min.css" />
   </head>
   <body>
     <div class="container">
       <div class="row">
+        <div class="col-md-12 mt-5">
+          <div
+            style="
+              position: relative;
+              display: flex;
+              gap: 10px;
+              margin-top: 20px;
+            "
+          >
+            <!-- Tooltip Buttons -->
+            <button
+              type="button"
+              class="aash-btn aash-btn-contained aash-btn-primary"
+              data-tooltip
+              data-placement="top"
+              data-title="Tooltip on Top"
+            >
+              Top
+            </button>
+            <button
+              type="button"
+              class="aash-btn"
+              data-tooltip
+              data-placement="right"
+              data-title="Tooltip on Right"
+            >
+              Right
+            </button>
+            <button
+              type="button"
+              class="aash-btn"
+              data-tooltip
+              data-placement="bottom"
+              data-title="Tooltip on Bottom"
+            >
+              Bottom
+            </button>
+            <button
+              type="button"
+              class="aash-btn"
+              data-tooltip
+              data-placement="left"
+              data-title="Tooltip on Left"
+            >
+              Left
+            </button>
+          </div>
+        </div>
+        <!-- button examples -->
         <div class="col-md-3" style="margin-top: 15px">
-          <button class="aash-btn aash-btn-contained aash-btn-primary aash-btn-md">
+          <button
+            class="aash-btn aash-btn-contained aash-btn-primary aash-btn-md "
+            data-toggle="aash-modal"
+            data-target="#demoModal"
+          >
             Primary
           </button>
         </div>
         <div class="col-md-3" style="margin-top: 15px">
-          <button class="aash-btn aash-btn-outlined aash-btn-secondary aash-btn-lg">
+          <button
+            class="aash-btn aash-btn-outlined aash-btn-secondary aash-btn-lg"
+          >
             Secondary
           </button>
         </div>
@@ -30,10 +90,789 @@
             Error
           </button>
         </div>
+        <div class="col-md-12 mt-5">
+          <!-- Input with floating label -->
+          <div class="aash-form-control">
+            <input type="text" class="aash-input" placeholder=" " id="email" />
+            <label for="email" class="aash-label">Email</label>
+          </div>
+
+          <!-- Textarea -->
+          <div class="aash-form-control">
+            <textarea
+              class="aash-textarea"
+              placeholder=" "
+              id="message"
+              data-rows="1"
+            ></textarea>
+            <label for="message" class="aash-label">Message</label>
+          </div>
+
+          <!-- Select -->
+          <div class="aash-form-control">
+            <select class="aash-select" id="country" value="">
+              <option value="" disabled selected></option>
+              <option value="0">-- Select --</option>
+              <option value="in">India</option>
+              <option value="us">USA</option>
+              <option value="uk">UK</option>
+            </select>
+            <label for="country" class="aash-label">Country</label>
+          </div>
+
+          <!-- Checkbox -->
+          <div class="aash-form-control">
+            <label class="aash-check">
+              <input type="checkbox" />
+              <span class="aash-checkmark"></span>
+              Accept Terms & Conditions
+            </label>
+          </div>
+
+          <!-- Radio -->
+          <div class="aash-form-control">
+            <label class="aash-radio">
+              <input type="radio" name="gender" />
+              <span class="aash-radiomark"></span>
+              Male
+            </label>
+            <label class="aash-radio">
+              <input type="radio" name="gender" />
+              <span class="aash-radiomark"></span>
+              Female
+            </label>
+          </div>
+
+          <div class="row">
+            <!-- Single Select -->
+            <div class="col-md-3">
+              <div class="aash-select-single" data-type="single">
+                <input type="hidden" name="country" />
+                <div class="aash-select-display">
+                  <span class="aash-placeholder">Select country...</span>
+                  <i class="arrow"></i>
+                </div>
+                <div class="aash-select-dropdown">
+                  <div class="aash-select-search">
+                    <input
+                      type="text"
+                      class="aash-input"
+                      placeholder="Search..."
+                    />
+                  </div>
+                  <div class="aash-options">
+                    <div class="aash-option" data-value="IN">India</div>
+                    <div class="aash-option" data-value="US">USA</div>
+                    <div class="aash-option" data-value="FR">France</div>
+                  </div>
+                  <div class="aash-no-options">No options found</div>
+                </div>
+              </div>
+            </div>
+            <!-- Multi Select -->
+            <div class="col-md-3">
+              <div class="aash-select-single" data-type="multi">
+                <input type="hidden" name="languages" />
+                <div class="aash-select-display">
+                  <div class="aash-chips"></div>
+                  <span class="aash-placeholder">Select options...</span>
+                  <i class="arrow"></i>
+                </div>
+                <div class="aash-select-dropdown">
+                  <div class="aash-select-search">
+                    <input
+                      type="text"
+                      class="aash-input"
+                      placeholder="Search..."
+                    />
+                  </div>
+                  <div class="aash-options">
+                    <label class="aash-option">
+                      <input type="checkbox" value="A" />
+                      <span class="aash-checkmark"></span>
+                      Option A
+                    </label>
+                    <label class="aash-option">
+                      <input type="checkbox" value="B" />
+                      <span class="aash-checkmark"></span>
+                      Option B
+                    </label>
+                    <label class="aash-option">
+                      <input type="checkbox" value="C" />
+                      <span class="aash-checkmark"></span>
+                      Option C
+                    </label>
+                    <label class="aash-option">
+                      <input type="checkbox" value="D" />
+                      <span class="aash-checkmark"></span>
+                      Option D
+                    </label>
+                  </div>
+                  <div class="aash-no-options">No options found</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <!-- Normal badges -->
+              <span class="aash-badge aash-badge-primary">Primary</span>
+              <span class="aash-badge aash-badge-error aash-badge-pill"
+                >99+</span
+              >
+
+              <br /><br />
+
+              <!-- Badge inside an icon -->
+              <div class="aash-badge-wrapper">
+                <i class="fa fa-bell fa-2x"></i>
+                <!-- Font Awesome icon -->
+                <span class="aash-badge aash-badge-error aash-badge-icon"
+                  >5</span
+                >
+              </div>
+
+              <div class="aash-badge-wrapper" style="margin-left: 20px">
+                <i class="fa fa-envelope fa-2x"></i>
+                <span class="aash-badge aash-badge-success aash-badge-icon"
+                  >12</span
+                >
+              </div>
+
+              <br /><br />
+
+              <!-- Badge inside a button -->
+              <button class="aash-btn aash-btn-primary">
+                Messages
+                <span class="aash-badge aash-badge-light aash-badge-pill"
+                  >4</span
+                >
+              </button>
+            </div>
+            <!-- aash-breadcrumb -->
+            <div class="col-md-3 mt-3">
+              <ol class="aash-breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Library</a></li>
+                <li class="active">Data</li>
+              </ol>
+            </div>
+            <div class="col-md-3 mt-3">
+              <ol class="aash-breadcrumb">
+                <li>
+                  <a href="#"><i class="fa fa-home"></i> Home</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-book"></i> Library</a>
+                </li>
+                <li class="active"><i class="fa fa-database"></i> Data</li>
+              </ol>
+            </div>
+            <!-- Nav & Tabs -->
+            <div class="col-md-3">
+              <ul
+                class="aash-nav aash-nav-outline aash-nav-secondary"
+                id="myNav1"
+              >
+                <li class="aash-nav-item">
+                  <a href="#" class="aash-nav-link active" data-tab="home"
+                    >Home</a
+                  >
+                </li>
+                <li class="aash-nav-item">
+                  <a href="#" class="aash-nav-link" data-tab="profile"
+                    >Profile</a
+                  >
+                </li>
+                <li class="aash-nav-item">
+                  <a href="#" class="aash-nav-link" data-tab="settings"
+                    >Settings</a
+                  >
+                </li>
+              </ul>
+
+              <div class="tab-content" id="tabContent1">
+                <div class="tab-pane active" data-tab="home">Home Content</div>
+                <div class="tab-pane" data-tab="profile">Profile Content</div>
+                <div class="tab-pane" data-tab="settings">Settings Content</div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <ul
+                class="aash-nav aash-nav-outline aash-nav-primary"
+                id="myNav2"
+              >
+                <li class="aash-nav-item">
+                  <a href="#" class="aash-nav-link active" data-tab="home1"
+                    >Home</a
+                  >
+                </li>
+                <li class="aash-nav-item">
+                  <a href="#" class="aash-nav-link" data-tab="profile1"
+                    >Profile</a
+                  >
+                </li>
+                <li class="aash-nav-item">
+                  <a href="#" class="aash-nav-link" data-tab="settings1"
+                    >Settings</a
+                  >
+                </li>
+              </ul>
+
+              <div class="tab-content" id="tabContent2">
+                <div class="tab-pane active" data-tab="home1">Home Content</div>
+                <div class="tab-pane" data-tab="profile1">Profile Content</div>
+                <div class="tab-pane" data-tab="settings1">
+                  Settings Content
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="aash-accordion">
+                <div class="aash-accordion-item">
+                  <button
+                    class="aash-accordion-header aash-accordion-primary active"
+                    data-target="acc1"
+                  >
+                    <span>Primary Accordion</span>
+                    <i class="fa fa-chevron-down"></i>
+                  </button>
+                  <div class="aash-accordion-body show" id="acc1">
+                    <p>
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                      Architecto, deleniti doloremque! Sint animi expedita
+                      accusantium harum iure saepe reprehenderit aliquam odit
+                      aspernatur. Non in officia quisquam unde aliquam voluptas,
+                      magni pariatur deleniti, et dolores omnis? Similique,
+                      rerum veniam eos id totam nemo, sunt esse doloribus
+                      aperiam expedita blanditiis ipsa quos, laudantium eligendi
+                      non iure sed ea delectus facilis. Aut quibusdam,
+                      repudiandae vero culpa quis suscipit id harum maxime hic
+                      laudantium, nemo est velit eum doloribus tempora autem
+                      obcaecati beatae pariatur. Totam, harum quae aut
+                      voluptatibus optio magnam cupiditate eos facilis
+                      voluptatum, inventore velit dicta alias distinctio
+                      voluptatem obcaecati vel dolores?Lorem ipsum dolor, sit
+                      amet consectetur adipisicing elit. In porro amet
+                      exercitationem earum laboriosam at architecto iure
+                      molestiae, similique perferendis nihil error numquam eius
+                      vero eum repellendus labore nisi incidunt possimus
+                      nesciunt ab? Esse, maiores nobis incidunt saepe, nisi
+                      aspernatur sapiente quisquam tempore, necessitatibus quod
+                      illo ratione. Porro, illum. Totam?
+                    </p>
+                  </div>
+                </div>
+
+                <div class="aash-accordion-item">
+                  <button
+                    class="aash-accordion-header aash-accordion-success"
+                    data-target="acc2"
+                  >
+                    <span>Success Accordion</span>
+                    <i class="fa fa-chevron-down"></i>
+                  </button>
+                  <div class="aash-accordion-body" id="acc2">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Pariatur non dolore saepe molestias quia cupiditate,
+                      doloribus sapiente consequuntur ad? Asperiores ipsam
+                      deserunt unde nam eligendi beatae ducimus architecto
+                      temporibus ad, perspiciatis blanditiis rem dicta voluptas
+                      facere eius nostrum a autem corrupti repudiandae! Aperiam,
+                      totam.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="com-md-4">
+              <h3>Center content horizontally</h3>
+              <div
+                class="d-flex justify-center gap-3"
+                style="background-color: #ccc"
+              >
+                <h2>Left</h2>
+                <h2>Right</h2>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <h3>Column with spaced items:</h3>
+              <div
+                class="d-flex flex-column justify-between"
+                style="height: 100px; background-color: #ccc"
+              >
+                <div>Top</div>
+                <div>Middle</div>
+                <div>Bottom</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <h3>Two columns, left fixed 200px and right fills the rest</h3>
+              <div class="d-flex" style="background-color: #ccc">
+                <div class="flex-0" style="width: 200px">Sidebar</div>
+                <div class="flex-1">Main content (fills)</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <h3>Wrap grid with gaps</h3>
+              <div
+                class="d-flex flex-wrap gap-3"
+                style="background-color: #ccc"
+              >
+                <div style="width: 160px">Card 1</div>
+                <div style="width: 160px">Card 2</div>
+                <div style="width: 160px">Card 3</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <h3>Align single child differently</h3>
+              <div
+                class="d-flex items-center"
+                style="height: 120px; background-color: #ccc"
+              >
+                <div class="self-end">Aligned to bottom</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <!-- Single Datepicker -->
+              <h3>Single Datepicker</h3>
+              <div class="aash-datepicker-wrapper">
+                <input
+                  type="text"
+                  class="aash-input aash-datepicker-input aash-datepicker"
+                  placeholder="Select Date"
+                  readonly
+                />
+                <span class="aash-datepicker-icon">📅</span>
+                <div class="aash-calendar-modal" id="singleCalendar"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="aash-datepicker-wrapper">
+                <input
+                  type="text"
+                  class="aash-input aash-range-start"
+                  placeholder="Start Date"
+                  readonly
+                />
+                <span class="aash-datepicker-icon">📅</span>
+                <div class="aash-calendar-modal"></div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="aash-datepicker-wrapper">
+                <input
+                  type="text"
+                  class="aash-input aash-range-end"
+                  placeholder="End Date"
+                  readonly
+                />
+                <span class="aash-datepicker-icon">📅</span>
+                <div class="aash-calendar-modal"></div>
+              </div>
+            </div>
+
+            <!-- table  -->
+            <div class="col-md-12 mt-4">
+              <div class="aash-table-responsive">
+                <table
+                  class="aash-table aash-table-striped aash-table-hover-primary"
+                >
+                  <thead class="aash-thead-primary">
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Status</th>
+                      <th>Joined</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Priya Sharma</td>
+                      <td>priya@example.com</td>
+                      <td>Frontend</td>
+                      <td>Active</td>
+                      <td>2023-06-12</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Rohan Gupta</td>
+                      <td>rohan@example.com</td>
+                      <td>Backend</td>
+                      <td>Active</td>
+                      <td>2022-11-01</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Meera Iyer</td>
+                      <td>meera@example.com</td>
+                      <td>Designer</td>
+                      <td>Inactive</td>
+                      <td>2024-01-20</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Arjun Nair</td>
+                      <td>arjun@example.com</td>
+                      <td>Manager</td>
+                      <td>Active</td>
+                      <td>2021-07-15</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Kavya Rao</td>
+                      <td>kavya@example.com</td>
+                      <td>Support</td>
+                      <td>Active</td>
+                      <td>2023-02-05</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- data table html  -->
+            <div class="col-md-12 mt-4">
+              <!-- nomal table  -->
+              <table
+                class="aash-table aash-table-striped aash-table-hover-primary aash-data-table"
+              >
+                <thead class="aash-thead-primary">
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Joined</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Priya Sharma</td>
+                    <td>priya@example.com</td>
+                    <td>Frontend</td>
+                    <td>Active</td>
+                    <td>2023-06-12</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Rohan Gupta</td>
+                    <td>rohan@example.com</td>
+                    <td>Backend</td>
+                    <td>Active</td>
+                    <td>2022-11-01</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Meera Iyer</td>
+                    <td>meera@example.com</td>
+                    <td>Designer</td>
+                    <td>Inactive</td>
+                    <td>2024-01-20</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Arjun Nair</td>
+                    <td>arjun@example.com</td>
+                    <td>Manager</td>
+                    <td>Active</td>
+                    <td>2021-07-15</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Kavya Rao</td>
+                    <td>kavya@example.com</td>
+                    <td>Support</td>
+                    <td>Active</td>
+                    <td>2023-02-05</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- mobile responsive card table  -->
+              <!-- <div class="aash-data-table aash-data-table-card">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Joined</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td data-label="#">1</td>
+                        <td data-label="Name">Priya Sharma</td>
+                        <td data-label="Email">priya@example.com</td>
+                        <td data-label="Role">Frontend</td>
+                        <td data-label="Status">Active</td>
+                        <td data-label="Joined">2023-06-12</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div> -->
+            </div>
+            <!-- data table with export button  -->
+            <div class="col-md-12 mt-4">
+              <div class="aash-data-table-card">
+                <table
+                  class="aash-table aash-table-striped aash-table-hover-primary aash-data-table aash-export-btn"
+                >
+                  <thead class="aash-thead-primary">
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Status</th>
+                      <th>Joined</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Priya Sharma</td>
+                      <td>priya@example.com</td>
+                      <td>Frontend</td>
+                      <td>Active</td>
+                      <td>2023-06-12</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Rohan Gupta</td>
+                      <td>rohan@example.com</td>
+                      <td>Backend</td>
+                      <td>Active</td>
+                      <td>2022-11-01</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Meera Iyer</td>
+                      <td>meera@example.com</td>
+                      <td>Designer</td>
+                      <td>Inactive</td>
+                      <td>2024-01-20</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Arjun Nair</td>
+                      <td>arjun@example.com</td>
+                      <td>Manager</td>
+                      <td>Active</td>
+                      <td>2021-07-15</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Kavya Rao</td>
+                      <td>kavya@example.com</td>
+                      <td>Support</td>
+                      <td>Active</td>
+                      <td>2023-02-05</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div style="margin: 50px; text-align: center">
+                <button
+                  class="aash-btn aash-btn-contained aash-btn-success"
+                  onclick="showToast('Success message!', 'success', 4000, 'top-right')"
+                >
+                  Top Right
+                </button>
+                <button
+                  class="aash-btn aash-btn-contained aash-btn-error"
+                  onclick="showToast('Error happened!', 'error', 5000, 'top-left')"
+                >
+                  Top Left
+                </button>
+                <button
+                  class="aash-btn aash-btn-contained aash-btn-warning"
+                  onclick="showToast('Warning alert!', 'warning', 6000, 'bottom-right')"
+                >
+                  Bottom Right
+                </button>
+                <button
+                  class="aash-btn aash-btn-contained aash-btn-info"
+                  onclick="showToast('Info note!', 'info', 3000, 'bottom-left')"
+                >
+                  Bottom Left
+                </button>
+                <button
+                  class="aash-btn aash-btn-contained aash-btn-error"
+                  onclick="showToast('This is center top!', 'error', 4000, 'top-center')"
+                >
+                  Top Center
+                </button>
+                <button
+                  class="aash-btn aash-btn-contained aash-btn-success"
+                  onclick="showToast('This is center bottom!', 'success', 4000, 'bottom-center')"
+                >
+                  Bottom Center
+                </button>
+              </div>
+              <form id="registerForm" action="RegisterServlet" method="post">
+                <label>Name:</label>
+                <input type="text" name="name" id="name" />
+
+                <label>Email:</label>
+                <input type="email" name="email" id="email" />
+
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+            <div class="col-md-12">
+              <h2>AashBox Modal Demo</h2>
+              <button onclick="AashBox.alert({title:'Alert!', message:'This is an alert example!', callback:()=>console.log('Alert closed')})">Show Alert</button>
+              <button onclick="AashBox.confirm({title:'Confirm Action', message:'Are you sure?', confirmLabel:'Yes', cancelLabel:'No', callback:(res)=>console.log('Confirm:',res)})">Show Confirm</button>
+              <button onclick="AashBox.prompt({
+                title:'User Form',
+                confirmLabel:'Submit',
+                cancelLabel:'Cancel',
+                fields:[
+                  {label:'Name', name:'username', inputType:'text', required:true, minLength:3},
+                  {label:'Email', name:'email', inputType:'email', required:true, pattern:'^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$'},
+                  {label:'Country', name:'country', inputType:'select', required:true, inputOptions:[{text:'Choose...',value:''},{text:'India',value:'IN'},{text:'USA',value:'US'}]},
+                  {label:'Gender', name:'gender', inputType:'radio', required:true, inputOptions:[{text:'Male',value:'M'},{text:'Female',value:'F'}]},
+                  {label:'Hobbies', name:'hobbies', inputType:'checkbox', inputOptions:[{text:'Music',value:'music'},{text:'Sports',value:'sports'}]}
+                ],
+                callback:(values)=>console.log('Prompt result:',values)
+              })">Show Prompt</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="demoModal" class="aash-modal ">
+      <div class="aash-modal-dialog">
+        <div class="aash-modal-header bg-success">
+          Modal Title
+          <button class="btn-close" data-close="aash-modal">✖</button>
+        </div>
+        <div class="aash-modal-body">
+          <p>Scrollable content here...</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>Add more content to test scrolling.</p>
+          <p>Keep adding more content...</p>
+          <p>Even more content...</p>
+        </div>
+        <div class="aash-modal-footer">
+          <button
+            class="aash-btn aash-btn-contained aash-btn-error"
+            data-close="aash-modal"
+          >
+            Close
+          </button>
+          <button class="aash-btn aash-btn-contained aash-btn-success">
+            Save
+          </button>
+        </div>
       </div>
     </div>
 
     <!-- <script src="http://aashdit-lib.netlify.app/bundle.6383e6926d9fd2f3832e.js" defer></script> -->
-     <script src="https://cdn.jsdelivr.net/gh/Aashdit-Technologies/aashdit-css-lib/aashdit.min.js"></script>
+    <script src="/aashdit.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/Aashdit-Technologies/aashdit-css-lib/aashdit.min.js"></script> -->
+    <script>
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // stop default form submit
+
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+
+          // 🔸 Simple validations
+          if (name === "") {
+            showToast("Name is required!", "error", 1000, "top-right");
+            return;
+          }
+          if (email === "" || !email.includes("@")) {
+            showToast("Invalid email address!", "error", 1000, "top-right");
+            return;
+          }
+
+          // 🔸 If valid → send form to backend via fetch (AJAX)
+          fetch("RegisterServlet", {
+            method: "POST",
+            body: new FormData(this),
+          })
+            .then((res) => res.text())
+            .then((data) => {
+              if (data.includes("SUCCESS")) {
+                showToast(
+                  "User registered successfully!",
+                  "success",
+                  4000,
+                  "top-right"
+                );
+                this.reset(); // clear form
+              } else {
+                showToast(
+                  "Registration failed: " + data,
+                  "error",
+                  5000,
+                  "top-right"
+                );
+              }
+            })
+            .catch((err) => {
+              showToast("Server error: " + err, "error", 5000, "top-right");
+            });
+        });
+    </script>
+    <script>
+      // AashBox.prompt({
+      //   title: "Register User",
+      //   confirmLabel: "Register",
+      //   cancelLabel: "Abort",
+      //   fields: [
+      //     {
+      //       label: "Name",
+      //       name: "username",
+      //       inputType: "text",
+      //       required: true,
+      //       minLength: 3,
+      //     },
+      //     {
+      //       label: "Email",
+      //       name: "email",
+      //       inputType: "email",
+      //       required: true,
+      //       pattern: "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+      //     },
+      //     {
+      //       label: "Age",
+      //       name: "age",
+      //       inputType: "number",
+      //       minLength: 1,
+      //       maxLength: 3,
+      //     },
+      //     {
+      //       label: "Country",
+      //       name: "country",
+      //       inputType: "select",
+      //       required: true,
+      //       inputOptions: [
+      //         { text: "Choose...", value: "" },
+      //         { text: "India", value: "IN" },
+      //         { text: "USA", value: "US" },
+      //       ],
+      //     },
+      //   ],
+      //   callback: function (result) {
+      //     console.log("Prompt Result:", result);
+      //   },
+      // });
+    </script>
   </body>
 </html>

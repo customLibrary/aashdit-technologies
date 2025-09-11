@@ -1,0 +1,45 @@
+<div class="container">
+      <div class="row">
+        <div class="col-md-3" style="margin-top: 15px">
+          <button class="aash-btn aash-btn-contained aash-btn-primary aash-btn-md" data-toggle="aash-modal" data-target="#demoModal">
+            Primary
+          </button>
+        </div>
+        <div class="col-md-3" style="margin-top: 15px">
+          <button class="aash-btn aash-btn-outlined aash-btn-secondary aash-btn-lg">
+            Secondary
+          </button>
+        </div>
+        <div class="col-md-3" style="margin-top: 15px">
+          <button class="aash-btn aash-btn-text aash-btn-success aash-btn-sm">
+            Success
+          </button>
+        </div>
+        <div class="col-md-3" style="margin-top: 15px">
+          <button class="aash-btn aash-btn-contained aash-btn-error">
+            Error
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+<div id="demoModal" class="aash-modal">
+  <div class="aash-modal-dialog">
+    <div class="aash-modal-header bg-secondary">
+      Modal Title
+      <button class="btn-close" data-close="aash-modal">✖</button>
+    </div>
+    <div class="aash-modal-body">
+      <p>Scrollable content here...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Add more content to test scrolling.</p>
+      <p>Keep adding more content...</p>
+      <p>Even more content...</p>
+    </div>
+    <div class="aash-modal-footer">
+      <button class="aash-btn aash-btn-contained aash-btn-error" data-close="aash-modal">Close</button>
+      <button class="aash-btn aash-btn-contained aash-btn-success">Save</button>
+    </div>
+  </div>
+</div>
