@@ -66,7 +66,7 @@
         <!-- button examples -->
         <div class="col-md-3" style="margin-top: 15px">
           <button
-            class="aash-btn aash-btn-contained aash-btn-primary aash-btn-md "
+            class="aash-btn aash-btn-contained aash-btn-primary aash-btn-md"
             data-toggle="aash-modal"
             data-target="#demoModal"
           >
@@ -720,19 +720,41 @@
               </div>
               <form id="registerForm" action="RegisterServlet" method="post">
                 <label>Name:</label>
-                <input type="text" name="name" id="name" />
+                <input type="text" name="name" id="name" class="aash-input" />
 
                 <label>Email:</label>
-                <input type="email" name="email" id="email" />
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  class="aash-input"
+                />
 
-                <button type="submit">Submit</button>
+                <button
+                  class="aash-btn aash-btn-contained aash-btn-success mt-3"
+                  type="submit"
+                >
+                  Submit
+                </button>
               </form>
             </div>
             <div class="col-md-12">
               <h2>AashBox Modal Demo</h2>
-              <button onclick="AashBox.alert({title:'Alert!', message:'This is an alert example!', callback:()=>console.log('Alert closed')})">Show Alert</button>
-              <button onclick="AashBox.confirm({title:'Confirm Action', message:'Are you sure?', confirmLabel:'Yes', cancelLabel:'No', callback:(res)=>console.log('Confirm:',res)})">Show Confirm</button>
-              <button onclick="AashBox.prompt({
+              <button
+                class="aash-btn aash-btn-contained aash-btn-success"
+                onclick="AashBox.alert({title:'Alert!', message:'This is an alert example!', callback:()=>console.log('Alert closed')})"
+              >
+                Show Alert
+              </button>
+              <button
+                class="aash-btn aash-btn-contained aash-btn-info"
+                onclick="AashBox.confirm({title:'Confirm Action', message:'Are you sure?', confirmLabel:'Yes', cancelLabel:'No', callback:(res)=>console.log('Confirm:',res)})"
+              >
+                Show Confirm
+              </button>
+              <button
+                class="aash-btn aash-btn-contained aash-btn-warning"
+                onclick="AashBox.prompt({
                 title:'User Form',
                 confirmLabel:'Submit',
                 cancelLabel:'Cancel',
@@ -744,7 +766,59 @@
                   {label:'Hobbies', name:'hobbies', inputType:'checkbox', inputOptions:[{text:'Music',value:'music'},{text:'Sports',value:'sports'}]}
                 ],
                 callback:(values)=>console.log('Prompt result:',values)
-              })">Show Prompt</button>
+              })"
+              >
+                Show Prompt
+              </button>
+            </div>
+            <div class="col-md-12">
+              <h2>Upload Files</h2>
+
+              <!-- Documents -->
+              <div class="upload-group">
+                <div class="upload-box" id="docBox">
+                  <label class="upload-label">
+                    <i class="fa-solid fa-file-word"></i> Upload Document
+                    <input
+                      type="file"
+                      hidden
+                      class="doc-upload"
+                      accept=".pdf,.doc,.docx,.xls,.xlsx"
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <!-- Images -->
+              <div class="upload-group">
+                <div class="upload-box" id="imgBox">
+                  <label class="upload-label">
+                    <i class="fa-solid fa-image"></i> Upload Image
+                    <input
+                      type="file"
+                      hidden
+                      class="img-upload"
+                      accept=".jpg,.jpeg,.png"
+                      multiple
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <!-- Videos -->
+              <div class="upload-group">
+                <div class="upload-box" id="videoBox">
+                  <label class="upload-label">
+                    <i class="fa-solid fa-video"></i> Upload Video
+                    <input
+                      type="file"
+                      hidden
+                      class="video-upload"
+                      accept="video/*"
+                    />
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -752,7 +826,7 @@
     </div>
 
     <!-- Modal -->
-    <div id="demoModal" class="aash-modal ">
+    <div id="demoModal" class="aash-modal">
       <div class="aash-modal-dialog">
         <div class="aash-modal-header bg-success">
           Modal Title
@@ -780,11 +854,8 @@
     </div>
 
     <!-- <script src="http://aashdit-lib.netlify.app/bundle.6383e6926d9fd2f3832e.js" defer></script> -->
-    <!-- <script src="/aashdit.min.js"></script> -->
-     
-    <!-- <script src="https://cdn.jsdelivr.net/gh/Aashdit-Technologies/aashdit-css-lib/aashdit.min.js"></script> -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
-     <!-- <script src="https://cdn.jsdelivr.net/gh/AjayKumarManasingh/aashdit-technologies@main/aashdit.locked.js"></script> -->
+    <script src="/aashdit.min.js"></script>
+
     <script>
       document
         .getElementById("registerForm")
