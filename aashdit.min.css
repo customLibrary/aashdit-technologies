@@ -1192,7 +1192,7 @@ img {
 
 .aash-form-control {
   position: relative;
-  margin-bottom: 1.5rem;
+  /* margin-bottom: 1.5rem; */
   font-family: var(--aash-font-family);
   width: 100%;
 }
@@ -1608,7 +1608,7 @@ img {
   padding: 0;
   margin: 0;
   list-style: none;
-  border-bottom: 2px solid var(--aash-light);
+  /* border-bottom: 2px solid var(--aash-light); */
 }
 
 /* Nav item */
@@ -2613,7 +2613,6 @@ thead th.sorted-desc {
 
 /* upload file css  */
 .upload-group {
-  margin-bottom: 20px;
   width: 500px;
 }
 
@@ -2686,4 +2685,8 @@ thead th.sorted-desc {
   background: #28a745;
   width: 0%;
   transition: width 0.2s;
+}
+.aash-thead-primary th {
+  background: var(--aash-primary);
+  color: var(--aash-white);
 }
