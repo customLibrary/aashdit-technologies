@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aashdit Technologies - Component Library</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/customLibrary/aashdit-technologies@main/aashdit.min.css"
+    />
+    <style>
+      :root {
+        --primary: #6a11cb;
+        --primary-light: #8a3ffc;
+        --secondary: #2575fc;
+        --success: #28a745;
+        --danger: #dc3545;
+        --warning: #ffc107;
+        --info: #17a2b8;
+        --light: #f8f9fa;
+        --dark: #343a40;
+        --sidebar-bg: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        --header-bg: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+        --card-bg: #ffffff;
+        --text-primary: #212529;
+        --text-light: #ffffff;
+        --border-radius: 12px;
+        --sidebar-width: 280px;
+        --header-height: 70px;
+        --transition-speed: 0.3s;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        --font-family-base: "Segoe UI", system-ui, -apple-system, sans-serif;
+        --font-family-code: "Consolas", "Monaco", monospace;
+        --font-size-base: 16px;
+        --font-size-sm: 14px;
+        --font-size-lg: 18px;
+        --line-height-base: 1.6;
+        --font-weight-normal: 400;
+        --font-weight-medium: 500;
+        --font-weight-bold: 600;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-family-base);
+        font-size: var(--font-size-base);
+        background-color: #f5f7fb;
+        color: var(--text-primary);
+        line-height: var(--line-height-base);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .dashboard-container {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      /* Sidebar Styles */
+      .sidebar {
+        width: var(--sidebar-width);
+        background: var(--sidebar-bg);
+        height: 100vh;
+        position: fixed;
+        overflow-y: auto;
+        z-index: 1000;
+        transition: transform var(--transition-speed);
+        box-shadow: var(--shadow);
+        scrollbar-width: none;
+      }
+
+      .sidebar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .sidebar-header {
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: var(--header-height);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: var(--text-light);
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        color: white;
+      }
+
+      .sidebar-nav {
+        padding: 1.5rem 0;
+      }
+
+      .nav-section {
+        margin-bottom: 1.5rem;
+      }
+
+      .nav-title {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 0.5rem;
+      }
+
+      .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 0.8rem 1.5rem;
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        border-left: 3px solid transparent;
+        transition: all 0.2s;
+      }
+
+      .nav-item:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-left-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .nav-item.active {
+        background-color: rgba(255, 255, 255, 0.15);
+        border-left-color: #ffffff;
+        color: #ffffff;
+        font-weight: 500;
+      }
+
+      .nav-item i {
+        margin-right: 0.8rem;
+        width: 20px;
+        text-align: center;
+      }
+
+      /* Main Content Styles */
+      .main-content {
+        flex: 1;
+        margin-left: var(--sidebar-width);
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+        height: var(--header-height);
+        background: var(--header-bg);
+        color: var(--text-light);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .page-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .cdn-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .cdn-btn {
+        padding: 0.5rem 1rem;
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 4px;
+        color: var(--text-light);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+      }
+
+      .cdn-btn:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .content-area {
+        padding: 2rem;
+      }
+
+      /* Component Section */
+      .component-section {
+        margin-bottom: 3rem;
+        display: none;
+      }
+
+      .component-section.active {
+        display: block;
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      .section-title {
+        font-size: calc(var(--font-size-base) * 1.5);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-light);
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        color: var(--primary);
+        font-weight: var(--font-weight-bold);
+        letter-spacing: -0.5px;
+      }
+
+      .section-title i {
+        background: var(--primary);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .component-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .component-card {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: transform 0.2s, box-shadow 0.2s;
+        border: 1px solid #e9ecef;
+      }
+
+      .component-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-header {
+        padding: 1rem;
+        border-bottom: 1px solid #e9ecef;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(90deg, #f8f9fa 0%, #ffffff 100%);
+      }
+
+      .card-title {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--primary);
+      }
+
+      .copy-btn {
+        background: none;
+        border: none;
+        color: var(--primary);
+        cursor: pointer;
+        font-size: 0.9rem;
+        padding: 0.3rem 0.6rem;
+        border-radius: 4px;
+        background: rgba(106, 17, 203, 0.1);
+      }
+
+      .copy-btn:hover {
+        background: rgba(106, 17, 203, 0.2);
+      }
+
+      .card-body {
+        padding: 1.5rem;
+      }
+
+      /* Introduction Section */
+      .intro-content {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border: 1px solid #e9ecef;
+        box-shadow: var(--shadow);
+      }
+
+      .intro-text {
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+        font-size: 1.1rem;
+      }
+
+      .feature-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        border-radius: var(--border-radius);
+        border: 1px solid #e9ecef;
+      }
+
+      .feature-icon {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 1.2rem;
+      }
+
+      .feature-content h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        color: var(--primary);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .sidebar {
+          transform: translateX(-100%);
+        }
+
+        .sidebar.open {
+          transform: translateX(0);
+        }
+
+        .main-content {
+          margin-left: 0;
+        }
+
+        .menu-toggle {
+          display: block;
+          position: fixed;
+          top: 1rem;
+          left: 1rem;
+          z-index: 1100;
+          background-color: var(--primary);
+          border: none;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          color: white;
+          box-shadow: var(--shadow);
+        }
+      }
+
+      @media (min-width: 993px) {
+        .menu-toggle {
+          display: none;
+        }
+      }
+
+      /* Code block styling */
+      .code-block {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 1rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        border: 1px solid #e9ecef;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      /* Animation for component cards */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .component-card {
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      /* Component Preview Area */
+      .preview-area {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        border: 1px solid #e9ecef;
+        min-height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      /* Utility classes */
+      .mt-3 {
+        margin-top: 1rem;
+      }
+      .mb-3 {
+        margin-bottom: 1rem;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .d-flex {
+        display: flex;
+      }
+      .justify-center {
+        justify-content: center;
+      }
+      .gap-3 {
+        gap: 1rem;
+      }
+
+      /* Colorful badges for section indicators */
+      .section-badge {
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
+      }
+
+      .badge-primary {
+        background: var(--primary);
+        color: white;
+      }
+      .badge-success {
+        background: var(--success);
+        color: white;
+      }
+      .badge-warning {
+        background: var(--warning);
+        color: black;
+      }
+      .badge-danger {
+        background: var(--danger);
+        color: white;
+      }
+      .badge-info {
+        background: var(--info);
+        color: white;
+      }
+
+      /* Component specific styles */
+      .aash-badge-wrapper {
+        display: inline-block;
+        position: relative;
+        margin-right: 20px;
+      }
+
+      .component-demo {
+        padding: 15px;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        background: white;
+      }
+
+      /* Toast notification */
+      .copy-toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: var(--success);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .copy-toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      /* Individual element copy button styles */
+      .element-copy-btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: rgba(106, 17, 203, 0.1);
+        border: none;
+        color: var(--primary);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+
+      [data-copyable] {
+        position: relative;
+      }
+
+      [data-copyable]:hover .element-copy-btn {
+        opacity: 1;
+      }
+
+      /* Component list styling */
+      .component-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .component-list-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 15px;
+        background: white;
+        border: 1px solid #e9ecef;
+        border-radius: 4px;
+      }
+
+      .component-list-item .copy-btn {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.4rem;
+      }
+
+      .component-title {
+        font-weight: 500;
+        color: var(--primary);
+      }
+
+      .full-code-copy {
+        margin-top: 20px;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar Navigation -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <div class="logo-icon">A</div>
+            <span>Aashdit</span>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <div class="nav-section">
+            <div class="nav-title">Main</div>
+            <a href="#intro" class="nav-item active" data-section="intro">
+              <i class="fas fa-home"></i>
+              <span>Introduction</span>
+            </a>
+            <a href="#cdn" class="nav-item" data-section="cdn">
+              <i class="fas fa-code"></i>
+              <span>CDN Links</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-title">Components</div>
+            <a href="#buttons" class="nav-item" data-section="buttons">
+              <i class="fas fa-hand-pointer"></i>
+              <span>Buttons</span>
+              <span class="section-badge badge-primary">10+</span>
+            </a>
+            <a href="#forms" class="nav-item" data-section="forms">
+              <i class="fas fa-edit"></i>
+              <span>Form Elements</span>
+              <span class="section-badge badge-success">6</span>
+            </a>
+            <a href="#tooltips" class="nav-item" data-section="tooltips">
+              <i class="fas fa-comment-alt"></i>
+              <span>Tooltips</span>
+              <span class="section-badge badge-warning">4</span>
+            </a>
+            <a href="#badges" class="nav-item" data-section="badges">
+              <i class="fas fa-certificate"></i>
+              <span>Badges</span>
+              <span class="section-badge badge-danger">5</span>
+            </a>
+            <a href="#breadcrumbs" class="nav-item" data-section="breadcrumbs">
+              <i class="fas fa-ellipsis-h"></i>
+              <span>Breadcrumbs</span>
+            </a>
+            <a href="#navs" class="nav-item" data-section="navs">
+              <i class="fas fa-bars"></i>
+              <span>Navs & Tabs</span>
+            </a>
+            <a href="#accordions" class="nav-item" data-section="accordions">
+              <i class="fas fa-bars"></i>
+              <span>Accordions</span>
+            </a>
+            <a href="#datepickers" class="nav-item" data-section="datepickers">
+              <i class="fas fa-calendar"></i>
+              <span>Datepickers</span>
+            </a>
+            <a href="#tables" class="nav-item" data-section="tables">
+              <i class="fas fa-table"></i>
+              <span>Tables</span>
+              <span class="section-badge badge-info">3</span>
+            </a>
+            <a href="#modals" class="nav-item" data-section="modals">
+              <i class="fas fa-window-maximize"></i>
+              <span>Modals</span>
+            </a>
+            <a href="#toasts" class="nav-item" data-section="toasts">
+              <i class="fas fa-bell"></i>
+              <span>Toasts</span>
+            </a>
+            <a href="#uploaders" class="nav-item" data-section="uploaders">
+              <i class="fas fa-upload"></i>
+              <span>Uploaders</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-title">Utilities</div>
+            <a href="#flexbox" class="nav-item" data-section="flexbox">
+              <i class="fas fa-th"></i>
+              <span>Flexbox Utilities</span>
+            </a>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="header">
+          <h1 class="page-title">Aashdit Component Library</h1>
+          <div class="cdn-buttons">
+            <button class="cdn-btn" id="copyCssCdn">
+              <i class="fas fa-copy"></i>
+              <span>Copy CSS CDN</span>
+            </button>
+            <button class="cdn-btn" id="copyJsCdn">
+              <i class="fas fa-copy"></i>
+              <span>Copy JS CDN</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="content-area">
+          <!-- Introduction Section -->
+          <section id="intro" class="component-section active">
+            <h2 class="section-title">
+              <i class="fas fa-info-circle"></i>
+              Introduction
+            </h2>
+            <div class="intro-content">
+              <p class="intro-text">
+                Aashdit Technologies Component Library is a modern, lightweight
+                CSS framework that provides beautifully designed UI components
+                for building responsive web applications. With a focus on
+                simplicity and customization, our library offers a comprehensive
+                set of components that are easy to use and integrate into any
+                project.
+              </p>
+
+              <div class="feature-list">
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-paint-brush"></i>
+                  </div>
+                  <div class="feature-content">
+                    <h3>Beautiful Design</h3>
+                    <p>Clean, modern components with attention to detail</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                  </div>
+                  <div class="feature-content">
+                    <h3>Fully Responsive</h3>
+                    <p>Works perfectly on all device sizes</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                  </div>
+                  <div class="feature-content">
+                    <h3>Lightweight</h3>
+                    <p>Minimal footprint for faster loading</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon">
+                    <i class="fas fa-cog"></i>
+                  </div>
+                  <div class="feature-content">
+                    <h3>Easy Customization</h3>
+                    <p>Variables and utilities for easy theming</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- CDN Section -->
+          <section id="cdn" class="component-section">
+            <h2 class="section-title">
+              <i class="fas fa-cloud-download-alt"></i>
+              CDN Links
+            </h2>
+
+            <div class="component-grid">
+              <div class="component-card">
+                <div class="card-header">
+                  <h3 class="card-title">CSS CDN</h3>
+                  <button
+                    class="copy-btn"
+                    data-copy='<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/customLibrary/aashdit-technologies@main/aashdit.min.css">'
+                  >
+                    <i class="fas fa-copy"></i>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="code-block">
+                    &lt;link rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/gh/customLibrary/aashdit-technologies@main/aashdit.min.css"&gt;
+                  </div>
+                </div>
+              </div>
+
+              <div class="component-card">
+                <div class="card-header">
+                  <h3 class="card-title">JavaScript CDN</h3>
+                  <button
+                    class="copy-btn"
+                    data-copy='<script src="https://cdn.jsdelivr.net/gh/customLibrary/aashdit-technologies@main/aashdit.min.js"></script>'
+                  >
+                    <i class="fas fa-copy"></i>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="code-block">
+                    &lt;script
+                    src="https://cdn.jsdelivr.net/gh/customLibrary/aashdit-technologies@main/aashdit.min.js"&gt;&lt;/script&gt;
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Buttons Section -->
+          <section id="buttons" class="component-section">
+            <h2 class="section-title">
+              <i class="fas fa-hand-pointer"></i>
+              Buttons
+            </h2>
+
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <h4>Contained Buttons</h4>
+                  <div class="component-list">
+                    <div class="component-list-item">
+                      <span class="component-title">Primary</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-contained aash-btn-primary">Primary</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Secondary</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-contained aash-btn-secondary">Secondary</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Success</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-contained aash-btn-success">Success</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Error</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-contained aash-btn-error">Error</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Warning</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-contained aash-btn-warning">Warning</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Info</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-contained aash-btn-info">Info</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="full-code-copy">
+                    <button
+                      class="copy-btn"
+                      data-copy='<button class="aash-btn aash-btn-contained aash-btn-primary">Primary</button>
+<button class="aash-btn aash-btn-contained aash-btn-secondary">Secondary</button>
+<button class="aash-btn aash-btn-contained aash-btn-success">Success</button>
+<button class="aash-btn aash-btn-contained aash-btn-error">Error</button>
+<button class="aash-btn aash-btn-contained aash-btn-warning">Warning</button>
+<button class="aash-btn aash-btn-contained aash-btn-info">Info</button>'
+                    >
+                      <i class="fas fa-copy"></i> Copy All Contained Buttons
+                    </button>
+                  </div>
+
+                  <div class="component-demo">
+                    <button
+                      class="aash-btn aash-btn-contained aash-btn-primary"
+                    >
+                      Primary
+                    </button>
+                    <button
+                      class="aash-btn aash-btn-contained aash-btn-secondary"
+                    >
+                      Secondary
+                    </button>
+                    <button
+                      class="aash-btn aash-btn-contained aash-btn-success"
+                    >
+                      Success
+                    </button>
+                    <button class="aash-btn aash-btn-contained aash-btn-error">
+                      Error
+                    </button>
+                    <button
+                      class="aash-btn aash-btn-contained aash-btn-warning"
+                    >
+                      Warning
+                    </button>
+                    <button class="aash-btn aash-btn-contained aash-btn-info">
+                      Info
+                    </button>
+                  </div>
+
+                  <h4 class="mt-4">Outlined Buttons</h4>
+                  <div class="component-list">
+                    <div class="component-list-item">
+                      <span class="component-title">Primary</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-outlined aash-btn-primary">Primary</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Secondary</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-outlined aash-btn-secondary">Secondary</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Success</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-outlined aash-btn-success">Success</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Error</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-outlined aash-btn-error">Error</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="full-code-copy">
+                    <button
+                      class="copy-btn"
+                      data-copy='<button class="aash-btn aash-btn-outlined aash-btn-primary">Primary</button>
+                                <button class="aash-btn aash-btn-outlined aash-btn-secondary">Secondary</button>
+                                <button class="aash-btn aash-btn-outlined aash-btn-success">Success</button>
+                                <button class="aash-btn aash-btn-outlined aash-btn-error">Error</button>'
+                    >
+                      <i class="fas fa-copy"></i> Copy All Outlined Buttons
+                    </button>
+                  </div>
+
+                  <div class="component-demo">
+                    <button class="aash-btn aash-btn-outlined aash-btn-primary">
+                      Primary
+                    </button>
+                    <button
+                      class="aash-btn aash-btn-outlined aash-btn-secondary"
+                    >
+                      Secondary
+                    </button>
+                    <button class="aash-btn aash-btn-outlined aash-btn-success">
+                      Success
+                    </button>
+                    <button class="aash-btn aash-btn-outlined aash-btn-error">
+                      Error
+                    </button>
+                  </div>
+
+                  <h4 class="mt-4">Text Buttons</h4>
+                  <div class="component-list">
+                    <div class="component-list-item">
+                      <span class="component-title">Primary</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-text aash-btn-primary">Primary</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Secondary</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-text aash-btn-secondary">Secondary</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Success</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-text aash-btn-success">Success</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="full-code-copy">
+                    <button
+                      class="copy-btn"
+                      data-copy='<button class="aash-btn aash-btn-text aash-btn-primary">Primary</button>
+<button class="aash-btn aash-btn-text aash-btn-secondary">Secondary</button>
+<button class="aash-btn aash-btn-text aash-btn-success">Success</button>'
+                    >
+                      <i class="fas fa-copy"></i> Copy All Text Buttons
+                    </button>
+                  </div>
+
+                  <div class="component-demo">
+                    <button class="aash-btn aash-btn-text aash-btn-primary">
+                      Primary
+                    </button>
+                    <button class="aash-btn aash-btn-text aash-btn-secondary">
+                      Secondary
+                    </button>
+                    <button class="aash-btn aash-btn-text aash-btn-success">
+                      Success
+                    </button>
+                  </div>
+
+                  <h4 class="mt-4">Button Sizes</h4>
+                  <div class="component-list">
+                    <div class="component-list-item">
+                      <span class="component-title">Small</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-contained aash-btn-primary aash-btn-sm">Small</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Medium</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-contained aash-btn-primary aash-btn-md">Medium</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Large</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<button class="aash-btn aash-btn-contained aash-btn-primary aash-btn-lg">Large</button>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="full-code-copy">
+                    <button
+                      class="copy-btn"
+                      data-copy='<button class="aash-btn aash-btn-contained aash-btn-primary aash-btn-sm">Small</button>
+<button class="aash-btn aash-btn-contained aash-btn-primary aash-btn-md">Medium</button>
+<button class="aash-btn aash-btn-contained aash-btn-primary aash-btn-lg">Large</button>'
+                    >
+                      <i class="fas fa-copy"></i> Copy All Button Sizes
+                    </button>
+                  </div>
+
+                  <div class="component-demo">
+                    <button
+                      class="aash-btn aash-btn-contained aash-btn-primary aash-btn-sm"
+                    >
+                      Small
+                    </button>
+                    <button
+                      class="aash-btn aash-btn-contained aash-btn-primary aash-btn-md"
+                    >
+                      Medium
+                    </button>
+                    <button
+                      class="aash-btn aash-btn-contained aash-btn-primary aash-btn-lg"
+                    >
+                      Large
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Forms Section -->
+          <section id="forms" class="component-section">
+            <h2 class="section-title">
+              <i class="fas fa-edit"></i>
+              Form Elements
+            </h2>
+
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- Input with Floating Label -->
+                  <h4>Input Fields</h4>
+                  <div class="component-list">
+                    <div class="component-list-item">
+                      <span class="component-title">Floating Input</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="aash-form-control">
+  <input type="text" class="aash-input" placeholder=" " id="email" />
+  <label for="email" class="aash-label">Email</label>
+</div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                  </div>
+                  <div class="component-demo">
+                    <div class="aash-form-control">
+                      <input
+                        type="text"
+                        class="aash-input"
+                        placeholder=" "
+                        id="email_demo"
+                      />
+                      <label for="email_demo" class="aash-label">Email</label>
+                    </div>
+                  </div>
+
+                  <!-- Textarea -->
+                  <h4 class="mt-4">Textarea</h4>
+                  <div class="component-list">
+                    <div class="component-list-item">
+                      <span class="component-title">Floating Textarea</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="aash-form-control">
+  <textarea class="aash-textarea" placeholder=" " id="message" data-rows="1"></textarea>
+  <label for="message" class="aash-label">Message</label>
+</div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                  </div>
+                  <div class="component-demo">
+                    <div class="aash-form-control">
+                      <textarea
+                        class="aash-textarea"
+                        placeholder=" "
+                        id="message_demo"
+                        data-rows="1"
+                      ></textarea>
+                      <label for="message_demo" class="aash-label"
+                        >Message</label
+                      >
+                    </div>
+                  </div>
+
+                  <!-- Select -->
+                  <h4 class="mt-4">Select Dropdown</h4>
+                  <div class="component-list">
+                    <div class="component-list-item">
+                      <span class="component-title">Basic Select</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="aash-form-control">
+            <select class="aash-select" id="country" value="">
+              <option value="" disabled selected></option>
+              <option value="0">-- Select --</option>
+              <option value="in">India</option>
+              <option value="us">USA</option>
+              <option value="uk">UK</option>
+            </select>
+            <label for="country" class="aash-label">Country</label>
+          </div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                  </div>
+                  <div class="component-demo">
+                    <div class="aash-form-control">
+                      <select class="aash-select" id="country" value="">
+                        <option value="" disabled selected></option>
+                        <option value="0">-- Select --</option>
+                        <option value="in">India</option>
+                        <option value="us">USA</option>
+                        <option value="uk">UK</option>
+                      </select>
+                      <label for="country" class="aash-label">Country</label>
+                    </div>
+                  </div>
+
+                  <!-- Checkbox -->
+                  <h4 class="mt-4">Checkbox</h4>
+                  <div class="component-list">
+                    <div class="component-list-item">
+                      <span class="component-title">Basic Checkbox</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="aash-form-control">
+  <label class="aash-check">
+    <input type="checkbox" />
+    <span class="aash-checkmark"></span>
+    Accept Terms & Conditions
+  </label>
+</div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                  </div>
+                  <div class="component-demo">
+                    <div class="aash-form-control">
+                      <label class="aash-check">
+                        <input type="checkbox" />
+                        <span class="aash-checkmark"></span>
+                        Accept Terms & Conditions
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Radio -->
+                  <h4 class="mt-4">Radio Buttons</h4>
+                  <div class="component-list">
+                    <div class="component-list-item">
+                      <span class="component-title">Gender Radio</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="aash-form-control">
+  <label class="aash-radio">
+    <input type="radio" name="gender" />
+    <span class="aash-radiomark"></span>
+    Male
+  </label>
+  <label class="aash-radio">
+    <input type="radio" name="gender" />
+    <span class="aash-radiomark"></span>
+    Female
+  </label>
+</div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                  </div>
+                  <div class="component-demo">
+                    <div class="aash-form-control">
+                      <label class="aash-radio">
+                        <input type="radio" name="gender_demo" />
+                        <span class="aash-radiomark"></span>
+                        Male
+                      </label>
+                      <label class="aash-radio">
+                        <input type="radio" name="gender_demo" />
+                        <span class="aash-radiomark"></span>
+                        Female
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Custom Single Select -->
+                  <h4 class="mt-4">Custom Single Select</h4>
+                  <div class="component-list">
+                    <div class="component-list-item">
+                      <span class="component-title">Searchable Select</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="aash-select-single" data-type="single">
+  <input type="hidden" name="country" />
+  <div class="aash-select-display">
+    <span class="aash-placeholder">Select country...</span>
+    <i class="arrow"></i>
+  </div>
+  <div class="aash-select-dropdown">
+    <div class="aash-select-search">
+      <input type="text" class="aash-input" placeholder="Search..." />
+    </div>
+    <div class="aash-options">
+      <div class="aash-option" data-value="IN">India</div>
+      <div class="aash-option" data-value="US">USA</div>
+      <div class="aash-option" data-value="FR">France</div>
+    </div>
+    <div class="aash-no-options">No options found</div>
+  </div>
+</div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                  </div>
+                  <div class="component-demo">
+                    <div class="aash-select-single" data-type="single">
+                      <input type="hidden" name="country_demo" />
+                      <div class="aash-select-display">
+                        <span class="aash-placeholder">Select country...</span>
+                        <i class="arrow"></i>
+                      </div>
+                      <div class="aash-select-dropdown">
+                        <div class="aash-select-search">
+                          <input
+                            type="text"
+                            class="aash-input"
+                            placeholder="Search..."
+                          />
+                        </div>
+                        <div class="aash-options">
+                          <div class="aash-option" data-value="IN">India</div>
+                          <div class="aash-option" data-value="US">USA</div>
+                          <div class="aash-option" data-value="FR">France</div>
+                        </div>
+                        <div class="aash-no-options">No options found</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Custom Multi Select -->
+                  <h4 class="mt-4">Custom Multi Select</h4>
+                  <div class="component-list">
+                    <div class="component-list-item">
+                      <span class="component-title">Multi Checkbox Select</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="aash-select-single" data-type="multi">
+  <input type="hidden" name="languages" />
+  <div class="aash-select-display">
+    <div class="aash-chips"></div>
+    <span class="aash-placeholder">Select options...</span>
+    <i class="arrow"></i>
+  </div>
+  <div class="aash-select-dropdown">
+    <div class="aash-select-search">
+      <input type="text" class="aash-input" placeholder="Search..." />
+    </div>
+    <div class="aash-options">
+      <label class="aash-option"><input type="checkbox" value="A" /><span class="aash-checkmark"></span>Option A</label>
+      <label class="aash-option"><input type="checkbox" value="B" /><span class="aash-checkmark"></span>Option B</label>
+      <label class="aash-option"><input type="checkbox" value="C" /><span class="aash-checkmark"></span>Option C</label>
+      <label class="aash-option"><input type="checkbox" value="D" /><span class="aash-checkmark"></span>Option D</label>
+    </div>
+    <div class="aash-no-options">No options found</div>
+  </div>
+</div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                  </div>
+                  <div class="component-demo">
+                    <div class="aash-select-single" data-type="multi">
+                      <input type="hidden" name="languages_demo" />
+                      <div class="aash-select-display">
+                        <div class="aash-chips"></div>
+                        <span class="aash-placeholder">Select options...</span>
+                        <i class="arrow"></i>
+                      </div>
+                      <div class="aash-select-dropdown">
+                        <div class="aash-select-search">
+                          <input
+                            type="text"
+                            class="aash-input"
+                            placeholder="Search..."
+                          />
+                        </div>
+                        <div class="aash-options">
+                          <label class="aash-option"
+                            ><input type="checkbox" value="A" /><span
+                              class="aash-checkmark"
+                            ></span
+                            >Option A</label
+                          >
+                          <label class="aash-option"
+                            ><input type="checkbox" value="B" /><span
+                              class="aash-checkmark"
+                            ></span
+                            >Option B</label
+                          >
+                          <label class="aash-option"
+                            ><input type="checkbox" value="C" /><span
+                              class="aash-checkmark"
+                            ></span
+                            >Option C</label
+                          >
+                          <label class="aash-option"
+                            ><input type="checkbox" value="D" /><span
+                              class="aash-checkmark"
+                            ></span
+                            >Option D</label
+                          >
+                        </div>
+                        <div class="aash-no-options">No options found</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Datepickers -->
+                  <h4 class="mt-4">Datepickers</h4>
+                  <div class="component-demo">
+                    <div class="aash-datepicker-wrapper">
+                      <input
+                        type="text"
+                        class="aash-input aash-datepicker-input aash-datepicker"
+                        placeholder="Select Date"
+                        readonly
+                      />
+                      <span class="aash-datepicker-icon">📅</span>
+                      <div class="aash-calendar-modal"></div>
+                    </div>
+                  </div>
+                  <div class="component-demo mt-3">
+                    <div class="aash-datepicker-wrapper">
+                      <input
+                        type="text"
+                        class="aash-input aash-range-start"
+                        placeholder="Start Date"
+                        readonly
+                      />
+                      <span class="aash-datepicker-icon">📅</span>
+                      <div class="aash-calendar-modal"></div>
+                    </div>
+                    <div class="aash-datepicker-wrapper mt-2">
+                      <input
+                        type="text"
+                        class="aash-input aash-range-end"
+                        placeholder="End Date"
+                        readonly
+                      />
+                      <span class="aash-datepicker-icon">📅</span>
+                      <div class="aash-calendar-modal"></div>
+                    </div>
+                  </div>
+
+                  <!-- Uploaders -->
+                  <h4 class="mt-4">File Uploaders</h4>
+                  <div class="component-demo">
+                    <div class="upload-group">
+                      <div class="upload-box" id="docBox_demo">
+                        <label class="upload-label">
+                          <i class="fa-solid fa-file-word"></i> Upload Document
+                          <input
+                            type="file"
+                            hidden
+                            class="doc-upload"
+                            accept=".pdf,.doc,.docx,.xls,.xlsx"
+                          />
+                        </label>
+                      </div>
+                    </div>
+                    <div class="upload-group">
+                      <div class="upload-box" id="imgBox_demo">
+                        <label class="upload-label">
+                          <i class="fa-solid fa-image"></i> Upload Image
+                          <input
+                            type="file"
+                            hidden
+                            class="img-upload"
+                            accept=".jpg,.jpeg,.png"
+                            multiple
+                          />
+                        </label>
+                      </div>
+                    </div>
+                    <div class="upload-group">
+                      <div class="upload-box" id="videoBox_demo">
+                        <label class="upload-label">
+                          <i class="fa-solid fa-video"></i> Upload Video
+                          <input
+                            type="file"
+                            hidden
+                            class="video-upload"
+                            accept="video/*"
+                          />
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Bootstrap Utilities Section -->
+          <section id="bootstrap-utilities" class="component-section">
+            <h2 class="section-title">
+              <i class="fas fa-tools"></i>
+              Bootstrap Utilities
+            </h2>
+
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <h4>Margin Utilities</h4>
+                  <div class="component-list">
+                    <div class="component-list-item">
+                      <span class="component-title">Margin All Sides</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="m-3">Content with margin on all sides</div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Margin Top & Bottom</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="my-4">Content with vertical margin</div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Margin Left & Right</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="mx-auto">Horizontally centered content</div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                  </div>
+
+                  <h4 class="mt-4">Padding Utilities</h4>
+                  <div class="component-list">
+                    <div class="component-list-item">
+                      <span class="component-title">Padding All Sides</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="p-3">Content with padding on all sides</div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Padding Top & Bottom</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="py-4">Content with vertical padding</div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Padding Left & Right</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="px-3">Content with horizontal padding</div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                  </div>
+
+                  <h4 class="mt-4">Grid System</h4>
+                  <div class="component-list">
+                    <div class="component-list-item">
+                      <span class="component-title">Basic Grid</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="container">
+    <div class="row">
+        <div class="col-md-6">Column 1</div>
+        <div class="col-md-6">Column 2</div>
+    </div>
+</div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Responsive Grid</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">Column 1</div>
+        <div class="col-12 col-md-6 col-lg-4">Column 2</div>
+        <div class="col-12 col-md-12 col-lg-4">Column 3</div>
+    </div>
+</div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                    <div class="component-list-item">
+                      <span class="component-title">Nested Grid</span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-6">Nested Column 1</div>
+                <div class="col-md-6">Nested Column 2</div>
+            </div>
+        </div>
+        <div class="col-md-4">Main Column</div>
+    </div>
+</div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="component-demo">
+                    <div class="container border p-3 mb-4">
+                      <div class="row">
+                        <div class="col-md-6 border p-2">Column 1</div>
+                        <div class="col-md-6 border p-2">Column 2</div>
+                      </div>
+                    </div>
+
+                    <div class="container border p-3">
+                      <div class="row">
+                        <div class="col-12 col-md-6 col-lg-4 border p-2">
+                          Column 1
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4 border p-2">
+                          Column 2
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-4 border p-2">
+                          Column 3
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Additional sections for all other components would follow the same pattern -->
+
+          <div class="text-center mt-3 mb-3">
+            <p>Scroll down or use the sidebar to explore more components</p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="copy-toast" id="copyToast">
+      <i class="fas fa-check-circle"></i>
+      <span>Code copied to clipboard!</span>
+    </div>
+
+    <script>
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById("menuToggle");
+      const sidebar = document.getElementById("sidebar");
+
+      menuToggle.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+      });
+
+      // Section Navigation
+      const navItems = document.querySelectorAll(".nav-item");
+      const sections = document.querySelectorAll(".component-section");
+
+      navItems.forEach((item) => {
+        item.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          // Remove active class from all items
+          navItems.forEach((navItem) => {
+            navItem.classList.remove("active");
+          });
+
+          // Add active class to clicked item
+          item.classList.add("active");
+
+          const targetSection = item.getAttribute("data-section");
+
+          // Hide all sections
+          sections.forEach((section) => {
+            section.classList.remove("active");
+          });
+
+          // Show target section
+          document.getElementById(targetSection).classList.add("active");
+
+          // Close sidebar on mobile after clicking
+          if (window.innerWidth < 992) {
+            sidebar.classList.remove("open");
+          }
+
+          // Scroll to top of content
+          document.querySelector(".content-area").scrollTop = 0;
+        });
+      });
+
+      // Copy CDN buttons
+      document.getElementById("copyCssCdn").addEventListener("click", () => {
+        navigator.clipboard.writeText(
+          '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/customLibrary/aashdit-technologies@main/aashdit.min.css">'
+        );
+        showCopyToast();
+      });
+
+      document.getElementById("copyJsCdn").addEventListener("click", () => {
+        navigator.clipboard.writeText(
+          '<script src="https://cdn.jsdelivr.net/gh/customLibrary/aashdit-technologies@main/aashdit.min.js"><\/script>'
+        );
+        showCopyToast();
+      });
+
+      // Copy functionality for all copy buttons and individual elements
+      document
+        .querySelectorAll(".copy-btn, [data-copyable]")
+        .forEach((element) => {
+          if (element.classList.contains("copy-btn")) {
+            element.addEventListener("click", function () {
+              const codeToCopy = this.getAttribute("data-copy");
+              copyToClipboard(codeToCopy);
+            });
+          } else {
+            const copyButton = document.createElement("button");
+            copyButton.className = "element-copy-btn";
+            copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+            element.style.position = "relative";
+            element.appendChild(copyButton);
+
+            copyButton.addEventListener("click", function (e) {
+              e.stopPropagation();
+              const codeToCopy = element.outerHTML;
+              copyToClipboard(codeToCopy);
+            });
+          }
+        });
+
+      // Helper function for copying to clipboard
+      function copyToClipboard(text) {
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            showCopyToast();
+          })
+          .catch((err) => {
+            console.error("Failed to copy: ", err);
+          });
+      }
+
+      // Show copy toast notification
+      function showCopyToast() {
+        const toast = document.getElementById("copyToast");
+        toast.classList.add("show");
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2000);
+      }
+
+      // Initialize tooltips
+      setTimeout(() => {
+        if (typeof initTooltips === "function") {
+          initTooltips();
+        }
+      }, 1000);
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/customLibrary/aashdit-technologies@main/aashdit.min.js"></script>
+  </body>
+</html>
