@@ -12,6 +12,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/customLibrary/aashdit-technologies@main/aashdit.min.css"
     />
+    <!-- <link rel="stylesheet" href="./aashdit.min.css" /> -->
     <style>
       :root {
         --primary: #6a11cb;
@@ -73,7 +74,7 @@
         height: 100vh;
         position: fixed;
         overflow-y: auto;
-        z-index: 1000;
+        z-index: 999;
         transition: transform var(--transition-speed);
         box-shadow: var(--shadow);
         scrollbar-width: none;
@@ -585,10 +586,122 @@
         margin-top: 20px;
         text-align: right;
       }
+      .desc {
+        margin: 10px 0 20px;
+        font-size: 15px;
+        color: #d63384;
+      }
+      .demo {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 15px;
+        margin-bottom: 10px;
+        display: flex;
+      }
+      .demo div {
+        background: #9a8c98;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 4px;
+        margin: 4px;
+        text-align: center;
+      }
+      pre {
+        background: #2d2d2d;
+        color: #f8f8f2;
+        padding: 12px;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-size: 14px;
+      }
+      code {
+        font-family: Consolas, monospace;
+      }
+      /* Gradient company name */
+      .text-gradient {
+        background: linear-gradient(90deg, #00d4ff, #7b61ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+      }
+      /* Loader full screen */
+      #loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #0f1724;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        z-index: 9999;
+        color: #fff;
+      }
+
+      .logos {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .logos img {
+        width: 80px;
+        height: auto;
+        z-index: 2;
+        position: relative;
+      }
+
+      /* Orbit (yellow border around logo “A”) */
+      .orbit {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 120px;
+        height: 120px;
+      }
+
+      .orbit circle {
+        fill: none;
+        stroke: #ffc107;
+        stroke-width: 4;
+        stroke-linecap: round;
+        stroke-dasharray: 326; /* circumference ~ 2πr (2*3.14*52) */
+        stroke-dashoffset: 326; /* hidden at start */
+      }
+
+      .company {
+        font-size: 20px;
+        font-weight: 700;
+        background: linear-gradient(90deg, #00d4ff, #7b61ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .byline {
+        font-size: 14px;
+        color: #9aa4b2;
+      }
     </style>
   </head>
   <body>
-    <div class="dashboard-container">
+    <div id="loader">
+      <div class="logos">
+        <img src="./logo.png" alt="Aashdit Logo" />
+        <svg class="orbit" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="52" />
+        </svg>
+      </div>
+      <div class="company">Aashdit Technologies</div>
+      <!-- <div class="byline">Developed by <strong>Aashdit Technologies</strong></div> -->
+    </div>
+    <div class="dashboard-container" id="content" style="display: none">
       <!-- Sidebar Navigation -->
       <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
@@ -615,26 +728,27 @@
             <a href="#buttons" class="nav-item" data-section="buttons">
               <i class="fas fa-hand-pointer"></i>
               <span>Buttons</span>
-              <span class="section-badge badge-primary">10+</span>
+              <!-- <span class="section-badge badge-primary">10+</span> -->
             </a>
             <a href="#forms" class="nav-item" data-section="forms">
               <i class="fas fa-edit"></i>
               <span>Form Elements</span>
-              <span class="section-badge badge-success">6</span>
+              <!-- <span class="section-badge badge-success">7</span> -->
             </a>
             <a href="#tooltips" class="nav-item" data-section="tooltips">
               <i class="fas fa-comment-alt"></i>
               <span>Tooltips</span>
-              <span class="section-badge badge-warning">4</span>
+              <!-- <span class="section-badge badge-warning">4</span> -->
             </a>
             <a href="#badges" class="nav-item" data-section="badges">
               <i class="fas fa-certificate"></i>
               <span>Badges</span>
-              <span class="section-badge badge-danger">5</span>
+              <!-- <span class="section-badge badge-danger">5</span> -->
             </a>
             <a href="#breadcrumbs" class="nav-item" data-section="breadcrumbs">
               <i class="fas fa-ellipsis-h"></i>
               <span>Breadcrumbs</span>
+              <!-- <span class="section-badge badge-success">2</span> -->
             </a>
             <a href="#navs" class="nav-item" data-section="navs">
               <i class="fas fa-bars"></i>
@@ -651,7 +765,7 @@
             <a href="#tables" class="nav-item" data-section="tables">
               <i class="fas fa-table"></i>
               <span>Tables</span>
-              <span class="section-badge badge-info">3</span>
+              <!-- <span class="section-badge badge-info">3</span> -->
             </a>
             <a href="#modals" class="nav-item" data-section="modals">
               <i class="fas fa-window-maximize"></i>
@@ -664,6 +778,10 @@
             <a href="#uploaders" class="nav-item" data-section="uploaders">
               <i class="fas fa-upload"></i>
               <span>Uploaders</span>
+            </a>
+            <a href="#bootbox" class="nav-item" data-section="bootbox">
+              <i class="fas fa-comment-alt"></i>
+              <span>BootBox</span>
             </a>
           </div>
 
@@ -1101,7 +1219,7 @@
                 <!-- Input with Floating Label -->
                 <h4>Input Fields</h4>
                 <div class="mt-3">
-                  <div class="component-list-item">
+                  <div class="component-list-item my-3">
                     <span class="component-title">Floating Input</span>
                     <button
                       class="copy-btn"
@@ -1129,7 +1247,7 @@
                 <!-- Textarea -->
                 <h4 class="mt-4">Textarea</h4>
                 <div class="mt-3">
-                  <div class="component-list-item">
+                  <div class="component-list-item my-3">
                     <span class="component-title">Floating Textarea</span>
                     <button
                       class="copy-btn"
@@ -1157,7 +1275,7 @@
                 <!-- Select -->
                 <h4 class="mt-4">Select Dropdown</h4>
                 <div class="mt-3">
-                  <div class="component-list-item">
+                  <div class="component-list-item my-3">
                     <span class="component-title">Basic Select</span>
                     <button
                       class="copy-btn"
@@ -1192,7 +1310,7 @@
                 <!-- Checkbox -->
                 <h4 class="mt-4">Checkbox</h4>
                 <div class="mt-3">
-                  <div class="component-list-item">
+                  <div class="component-list-item my-3">
                     <span class="component-title">Basic Checkbox</span>
                     <button
                       class="copy-btn"
@@ -1221,7 +1339,7 @@ Accept Terms & Conditions
                 <!-- Radio -->
                 <h4 class="mt-4">Radio Buttons</h4>
                 <div class="mt-3">
-                  <div class="component-list-item">
+                  <div class="component-list-item my-3">
                     <span class="component-title">Gender Radio</span>
                     <button
                       class="copy-btn"
@@ -1259,7 +1377,7 @@ Female
                 <!-- Custom Single Select -->
                 <h4 class="mt-4">Custom Single Select</h4>
                 <div class="mt-3">
-                  <div class="component-list-item">
+                  <div class="component-list-item my-3">
                     <span class="component-title">Searchable Select</span>
                     <button
                       class="copy-btn"
@@ -1314,7 +1432,7 @@ Female
                 <!-- Custom Multi Select -->
                 <h4 class="mt-4">Custom Multi Select</h4>
                 <div class="mt-3">
-                  <div class="component-list-item">
+                  <div class="component-list-item my-3">
                     <span class="component-title">Multi Checkbox Select</span>
                     <button
                       class="copy-btn"
@@ -1428,7 +1546,7 @@ Top
                       class="copy-btn"
                       data-copy='<button
 type="button"
-class="aash-btn"
+class="aash-btn aash-btn-contained aash-btn-primary"
 data-tooltip
 data-placement="right"
 data-title="Tooltip on Right"
@@ -1446,7 +1564,7 @@ Right
                       class="copy-btn"
                       data-copy='<button
 type="button"
-class="aash-btn"
+class="aash-btn aash-btn-contained aash-btn-primary"
 data-tooltip
 data-placement="bottom"
 data-title="Tooltip on Bottom"
@@ -1464,7 +1582,7 @@ Bottom
                       class="copy-btn"
                       data-copy='<button
 type="button"
-class="aash-btn"
+class="aash-btn aash-btn-contained aash-btn-primary"
 data-tooltip
 data-placement="left"
 data-title="Tooltip on Left"
@@ -1497,7 +1615,7 @@ Left
                     </button>
                     <button
                       type="button"
-                      class="aash-btn"
+                      class="aash-btn aash-btn-contained aash-btn-primary"
                       data-tooltip
                       data-placement="right"
                       data-title="Tooltip on Right"
@@ -1506,7 +1624,7 @@ Left
                     </button>
                     <button
                       type="button"
-                      class="aash-btn"
+                      class="aash-btn aash-btn-contained aash-btn-primary"
                       data-tooltip
                       data-placement="bottom"
                       data-title="Tooltip on Bottom"
@@ -1515,7 +1633,7 @@ Left
                     </button>
                     <button
                       type="button"
-                      class="aash-btn"
+                      class="aash-btn aash-btn-contained aash-btn-primary"
                       data-tooltip
                       data-placement="left"
                       data-title="Tooltip on Left"
@@ -1656,39 +1774,21 @@ Left
               <div class="col-md-12">
                 <!-- Breadcrumbs -->
                 <h4 class="mt-4">Breadcrumbs</h4>
-                <div class="component-list">
-                  <!-- Simple Breadcrumb -->
-                  <div class="component-list-item">
-                    <span class="component-title">Simple Breadcrumb</span>
-                    <button
-                      class="copy-btn"
-                      data-copy='<ol class="aash-breadcrumb">
+                <!-- Simple Breadcrumb -->
+                <div class="component-list-item my-3">
+                  <span class="component-title">Simple Breadcrumb</span>
+                  <button
+                    class="copy-btn"
+                    data-copy='<ol class="aash-breadcrumb">
 <li><a href="#">Home</a></li>
 <li><a href="#">Library</a></li>
 <li class="active">Data</li>
 </ol>'
-                    >
-                      <i class="fas fa-copy"></i> Copy
-                    </button>
-                  </div>
-
-                  <!-- Breadcrumb with Icons -->
-                  <div class="component-list-item">
-                    <span class="component-title">Breadcrumb with Icons</span>
-                    <button
-                      class="copy-btn"
-                      data-copy='<ol class="aash-breadcrumb">
-<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
-<li><a href="#"><i class="fa fa-book"></i> Library</a></li>
-<li class="active"><i class="fa fa-database"></i> Data</li>
-</ol>'
-                    >
-                      <i class="fas fa-copy"></i> Copy
-                    </button>
-                  </div>
+                  >
+                    <i class="fas fa-copy"></i> Copy
+                  </button>
                 </div>
 
-                <!-- Demo -->
                 <div class="component-demo">
                   <div class="col-md-3 mt-3">
                     <ol class="aash-breadcrumb">
@@ -1697,6 +1797,26 @@ Left
                       <li class="active">Data</li>
                     </ol>
                   </div>
+                </div>
+
+                <!-- Breadcrumb with Icons -->
+                <div class="component-list-item my-3">
+                  <span class="component-title">Breadcrumb with Icons</span>
+                  <button
+                    class="copy-btn"
+                    data-copy='<ol class="aash-breadcrumb">
+<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+<li><a href="#"><i class="fa fa-book"></i> Library</a></li>
+<li class="active"><i class="fa fa-database"></i> Data</li>
+</ol>'
+                  >
+                    <i class="fas fa-copy"></i> Copy
+                  </button>
+                </div>
+
+                <!-- Demo -->
+
+                <div class="component-demo">
                   <div class="col-md-3 mt-3">
                     <ol class="aash-breadcrumb">
                       <li>
@@ -1952,7 +2072,7 @@ Left
     </button>
     <div class="aash-accordion-body show" id="acc1">
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto, deleniti doloremque! Sint animi expedita accusantium harum iure saepe reprehenderit aliquam odit aspernatur.
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto, deleniti doloremque! Sint animi expedita accusantium harum iure saepe reprehenderit aliquam odit aspernatur.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto, deleniti doloremque! Sint animi expedita accusantium harum iure saepe reprehenderit aliquam odit aspernatur.
       </p>
     </div>
   </div>
@@ -2113,7 +2233,17 @@ Left
                             Lorem ipsum dolor sit, amet consectetur adipisicing
                             elit. Architecto, deleniti doloremque! Sint animi
                             expedita accusantium harum iure saepe reprehenderit
-                            aliquam odit aspernatur.
+                            aliquam odit aspernatur.Lorem ipsum dolor sit, amet
+                            consectetur adipisicing elit. Architecto, deleniti
+                            doloremque! Sint animi expedita accusantium harum
+                            iure saepe reprehenderit aliquam odit aspernatur.
+                            Lorem ipsum dolor sit, amet consectetur adipisicing
+                            elit. Architecto, deleniti doloremque! Sint animi
+                            expedita accusantium harum iure saepe reprehenderit
+                            aliquam odit aspernatur.Lorem ipsum dolor sit, amet
+                            consectetur adipisicing elit. Architecto, deleniti
+                            doloremque! Sint animi expedita accusantium harum
+                            iure saepe reprehenderit aliquam odit aspernatur.
                           </p>
                         </div>
                       </div>
@@ -2129,6 +2259,9 @@ Left
                         </button>
                         <div class="aash-accordion-body" id="acc2">
                           <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Pariatur non dolore saepe molestias quia
+                            cupiditate, doloribus sapiente consequuntur ad?
                             Lorem ipsum dolor sit amet consectetur adipisicing
                             elit. Pariatur non dolore saepe molestias quia
                             cupiditate, doloribus sapiente consequuntur ad?
@@ -2206,82 +2339,80 @@ Left
               <div class="col-md-12">
                 <!-- Tables -->
                 <h4 class="mt-4">Tables</h4>
-                <div class="component-list">
-                  <!-- Normal Table -->
-                  <div class="component-list-item">
-                    <span
-                      class="component-title"
-                      style="
-                        background-color: #0d6efd;
-                        color: #fff;
-                        padding: 2px 8px;
-                        border-radius: 4px;
-                      "
-                    >
-                      Normal Table
-                    </span>
-                    <button
-                      class="copy-btn"
-                      data-copy='<div class="aash-table-responsive">
-  <table class="aash-table aash-table-striped aash-table-hover-primary">
+                <!-- Normal Table -->
+                <div class="component-list-item my-3">
+                  <span
+                    class="component-title"
+                    style="
+                      background-color: #0d6efd;
+                      color: #fff;
+                      padding: 2px 8px;
+                      border-radius: 4px;
+                    "
+                  >
+                    Normal Table
+                  </span>
+                  <button
+                    class="copy-btn"
+                    data-copy='<div class="aash-table-responsive">
+    <table class="aash-table aash-table-striped aash-table-hover-primary">
     <thead class="aash-thead-primary">
-      <tr>
+        <tr>
         <th>#</th>
         <th>Name</th>
         <th>Email</th>
         <th>Role</th>
         <th>Status</th>
         <th>Joined</th>
-      </tr>
+        </tr>
     </thead>
     <tbody>
-      <tr>
+        <tr>
         <td>1</td>
         <td>Priya Sharma</td>
         <td>priya@example.com</td>
         <td>Frontend</td>
         <td>Active</td>
         <td>2023-06-12</td>
-      </tr>
-      <tr>
+        </tr>
+        <tr>
         <td>2</td>
         <td>Rohan Gupta</td>
         <td>rohan@example.com</td>
         <td>Backend</td>
         <td>Active</td>
         <td>2022-11-01</td>
-      </tr>
-      <tr>
+        </tr>
+        <tr>
         <td>3</td>
         <td>Meera Iyer</td>
         <td>meera@example.com</td>
         <td>Designer</td>
         <td>Inactive</td>
         <td>2024-01-20</td>
-      </tr>
-      <tr>
+        </tr>
+        <tr>
         <td>4</td>
         <td>Arjun Nair</td>
         <td>arjun@example.com</td>
         <td>Manager</td>
         <td>Active</td>
         <td>2021-07-15</td>
-      </tr>
-      <tr>
+        </tr>
+        <tr>
         <td>5</td>
         <td>Kavya Rao</td>
         <td>kavya@example.com</td>
         <td>Support</td>
         <td>Active</td>
         <td>2023-02-05</td>
-      </tr>
+        </tr>
     </tbody>
-  </table>
-</div>'
-                    >
-                      <i class="fas fa-copy"></i> Copy
-                    </button>
-                  </div>
+    </table>
+    </div>'
+                  >
+                    <i class="fas fa-copy"></i> Copy
+                  </button>
                 </div>
 
                 <!-- Demo -->
@@ -2346,83 +2477,83 @@ Left
                       </table>
                     </div>
                   </div>
+                </div>
+                <div class="component-demo">
                   <div class="col-md-12 mt-3">
                     <!-- Data Table (No Export Button) -->
                     <h4 class="mt-4">Data Table (No Export)</h4>
-                    <div class="component-list">
-                      <!-- Data Table -->
-                      <div class="component-list-item">
-                        <span
-                          class="component-title"
-                          style="
-                            background-color: #20c997;
-                            color: #fff;
-                            padding: 2px 8px;
-                            border-radius: 4px;
-                          "
-                        >
-                          Data Table
-                        </span>
-                        <button
-                          class="copy-btn"
-                          data-copy='<table class="aash-table aash-table-striped aash-table-hover-primary aash-data-table">
-  <thead class="aash-thead-primary">
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Role</th>
-      <th>Status</th>
-      <th>Joined</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>Priya Sharma</td>
-      <td>priya@example.com</td>
-      <td>Frontend</td>
-      <td>Active</td>
-      <td>2023-06-12</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Rohan Gupta</td>
-      <td>rohan@example.com</td>
-      <td>Backend</td>
-      <td>Active</td>
-      <td>2022-11-01</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Meera Iyer</td>
-      <td>meera@example.com</td>
-      <td>Designer</td>
-      <td>Inactive</td>
-      <td>2024-01-20</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>Arjun Nair</td>
-      <td>arjun@example.com</td>
-      <td>Manager</td>
-      <td>Active</td>
-      <td>2021-07-15</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>Kavya Rao</td>
-      <td>kavya@example.com</td>
-      <td>Support</td>
-      <td>Active</td>
-      <td>2023-02-05</td>
-    </tr>
-  </tbody>
-</table>'
-                        >
-                          <i class="fas fa-copy"></i> Copy
-                        </button>
-                      </div>
+                    <!-- Data Table -->
+                    <div class="component-list-item my-3">
+                      <span
+                        class="component-title"
+                        style="
+                          background-color: #0d6efd;
+                          color: #fff;
+                          padding: 2px 8px;
+                          border-radius: 4px;
+                        "
+                      >
+                        Data Table
+                      </span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<table class="aash-table aash-table-striped aash-table-hover-primary aash-data-table">
+    <thead class="aash-thead-primary">
+        <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Joined</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>1</td>
+        <td>Priya Sharma</td>
+        <td>priya@example.com</td>
+        <td>Frontend</td>
+        <td>Active</td>
+        <td>2023-06-12</td>
+        </tr>
+        <tr>
+        <td>2</td>
+        <td>Rohan Gupta</td>
+        <td>rohan@example.com</td>
+        <td>Backend</td>
+        <td>Active</td>
+        <td>2022-11-01</td>
+        </tr>
+        <tr>
+        <td>3</td>
+        <td>Meera Iyer</td>
+        <td>meera@example.com</td>
+        <td>Designer</td>
+        <td>Inactive</td>
+        <td>2024-01-20</td>
+        </tr>
+        <tr>
+        <td>4</td>
+        <td>Arjun Nair</td>
+        <td>arjun@example.com</td>
+        <td>Manager</td>
+        <td>Active</td>
+        <td>2021-07-15</td>
+        </tr>
+        <tr>
+        <td>5</td>
+        <td>Kavya Rao</td>
+        <td>kavya@example.com</td>
+        <td>Support</td>
+        <td>Active</td>
+        <td>2023-02-05</td>
+        </tr>
+    </tbody>
+    </table>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
                     </div>
 
                     <!-- Demo -->
@@ -2487,85 +2618,85 @@ Left
                       </div>
                     </div>
                   </div>
+                </div>
+                <div class="component-demo">
                   <div class="col-md-12 mt-3">
                     <!-- Data Table with Export Buttons -->
                     <h4 class="mt-4">Data Table (With Export)</h4>
-                    <div class="component-list">
-                      <!-- Data Table Export -->
-                      <div class="component-list-item">
-                        <span
-                          class="component-title"
-                          style="
-                            background-color: #6610f2;
-                            color: #fff;
-                            padding: 2px 8px;
-                            border-radius: 4px;
-                          "
-                        >
-                          Data Table + Export
-                        </span>
-                        <button
-                          class="copy-btn"
-                          data-copy='<div class="aash-data-table-card">
-  <table class="aash-table aash-table-striped aash-table-hover-primary aash-data-table aash-export-btn">
-    <thead class="aash-thead-primary">
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Role</th>
-        <th>Status</th>
-        <th>Joined</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Priya Sharma</td>
-        <td>priya@example.com</td>
-        <td>Frontend</td>
-        <td>Active</td>
-        <td>2023-06-12</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Rohan Gupta</td>
-        <td>rohan@example.com</td>
-        <td>Backend</td>
-        <td>Active</td>
-        <td>2022-11-01</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Meera Iyer</td>
-        <td>meera@example.com</td>
-        <td>Designer</td>
-        <td>Inactive</td>
-        <td>2024-01-20</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Arjun Nair</td>
-        <td>arjun@example.com</td>
-        <td>Manager</td>
-        <td>Active</td>
-        <td>2021-07-15</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>Kavya Rao</td>
-        <td>kavya@example.com</td>
-        <td>Support</td>
-        <td>Active</td>
-        <td>2023-02-05</td>
-      </tr>
-    </tbody>
-  </table>
-</div>'
-                        >
-                          <i class="fas fa-copy"></i> Copy
-                        </button>
-                      </div>
+                    <!-- Data Table Export -->
+                    <div class="component-list-item my-3">
+                      <span
+                        class="component-title"
+                        style="
+                          background-color: #6610f2;
+                          color: #fff;
+                          padding: 2px 8px;
+                          border-radius: 4px;
+                        "
+                      >
+                        Data Table + Export
+                      </span>
+                      <button
+                        class="copy-btn"
+                        data-copy='<div class="aash-data-table-card">
+    <table class="aash-table aash-table-striped aash-table-hover-primary aash-data-table aash-export-btn">
+        <thead class="aash-thead-primary">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Joined</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Priya Sharma</td>
+            <td>priya@example.com</td>
+            <td>Frontend</td>
+            <td>Active</td>
+            <td>2023-06-12</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Rohan Gupta</td>
+            <td>rohan@example.com</td>
+            <td>Backend</td>
+            <td>Active</td>
+            <td>2022-11-01</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Meera Iyer</td>
+            <td>meera@example.com</td>
+            <td>Designer</td>
+            <td>Inactive</td>
+            <td>2024-01-20</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Arjun Nair</td>
+            <td>arjun@example.com</td>
+            <td>Manager</td>
+            <td>Active</td>
+            <td>2021-07-15</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Kavya Rao</td>
+            <td>kavya@example.com</td>
+            <td>Support</td>
+            <td>Active</td>
+            <td>2023-02-05</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>'
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
                     </div>
 
                     <!-- Demo -->
@@ -2668,7 +2799,7 @@ Left
                     </button>
                   </div>
                 </div>
-                <div class="component-demo">
+                <div class="component-demo mt-3">
                   <div class="aash-datepicker-wrapper">
                     <input
                       type="text"
@@ -2737,6 +2868,739 @@ Left
             </div>
           </section>
 
+          <!-- modal Section -->
+          <section id="modals" class="component-section">
+            <h2 class="section-title">
+              <i class="fas fa-window-maximize"></i>
+              Modals
+            </h2>
+            <div class="row">
+              <div class="col-md-12">
+                <!-- Modals -->
+                <h4 class="mt-4">Modals</h4>
+                <div class="component-list">
+                  <!-- Primary Modal -->
+                  <div class="component-list-item gap-2">
+                    <span
+                      class="component-title"
+                      style="
+                        background-color: #0d6efd;
+                        color: #fff;
+                        padding: 2px 8px;
+                        border-radius: 4px;
+                      "
+                    >
+                      Primary Modal
+                    </span>
+                    <button
+                      class="copy-btn"
+                      data-copy='<button class="aash-btn aash-btn-contained aash-btn-primary aash-btn-md" data-toggle="aash-modal" data-target="#primaryModal">Primary</button>'
+                    >
+                      <i class="fas fa-copy"></i> Copy Button
+                    </button>
+                    <button
+                      class="copy-btn"
+                      data-copy='<div id="primaryModal" class="aash-modal">
+  <div class="aash-modal-dialog">
+    <div class="aash-modal-header bg-primary">
+      Modal Title
+      <button class="btn-close" data-close="aash-modal">✖</button>
+    </div>
+    <div class="aash-modal-body">
+      <p>Scrollable content here...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <div class="aash-modal-footer">
+      <button class="aash-btn aash-btn-contained aash-btn-error" data-close="aash-modal">Close</button>
+      <button class="aash-btn aash-btn-contained aash-btn-success">Save</button>
+    </div>
+  </div>
+</div>'
+                    >
+                      <i class="fas fa-copy"></i> Copy Modal
+                    </button>
+                  </div>
+
+                  <!-- Success Modal -->
+                  <div class="component-list-item gap-2">
+                    <span
+                      class="component-title"
+                      style="
+                        background-color: #198754;
+                        color: #fff;
+                        padding: 2px 8px;
+                        border-radius: 4px;
+                      "
+                    >
+                      Success Modal
+                    </span>
+                    <button
+                      class="copy-btn"
+                      data-copy='<button class="aash-btn aash-btn-contained aash-btn-success aash-btn-md" data-toggle="aash-modal" data-target="#successModal">Success</button>'
+                    >
+                      <i class="fas fa-copy"></i> Copy Button
+                    </button>
+                    <button
+                      class="copy-btn"
+                      data-copy='<div id="successModal" class="aash-modal">
+  <div class="aash-modal-dialog">
+    <div class="aash-modal-header bg-success">
+      Modal Title
+      <button class="btn-close" data-close="aash-modal">✖</button>
+    </div>
+    <div class="aash-modal-body">
+      <p>Success modal content here...</p>
+    </div>
+    <div class="aash-modal-footer">
+      <button class="aash-btn aash-btn-contained aash-btn-error" data-close="aash-modal">Close</button>
+      <button class="aash-btn aash-btn-contained aash-btn-success">Save</button>
+    </div>
+  </div>
+</div>'
+                    >
+                      <i class="fas fa-copy"></i> Copy Modal
+                    </button>
+                  </div>
+
+                  <!-- Info Modal -->
+                  <div class="component-list-item gap-2">
+                    <span
+                      class="component-title"
+                      style="
+                        background-color: #0dcaf0;
+                        color: #000;
+                        padding: 2px 8px;
+                        border-radius: 4px;
+                      "
+                    >
+                      Info Modal
+                    </span>
+                    <button
+                      class="copy-btn"
+                      data-copy='<button class="aash-btn aash-btn-contained aash-btn-info aash-btn-md" data-toggle="aash-modal" data-target="#infoModal">Info</button>'
+                    >
+                      <i class="fas fa-copy"></i> Copy Button
+                    </button>
+                    <button
+                      class="copy-btn"
+                      data-copy='<div id="infoModal" class="aash-modal">
+  <div class="aash-modal-dialog">
+    <div class="aash-modal-header bg-info">
+      Modal Title
+      <button class="btn-close" data-close="aash-modal">✖</button>
+    </div>
+    <div class="aash-modal-body">
+      <p>Info modal content here...</p>
+    </div>
+    <div class="aash-modal-footer">
+      <button class="aash-btn aash-btn-contained aash-btn-error" data-close="aash-modal">Close</button>
+      <button class="aash-btn aash-btn-contained aash-btn-success">Save</button>
+    </div>
+  </div>
+</div>'
+                    >
+                      <i class="fas fa-copy"></i> Copy Modal
+                    </button>
+                  </div>
+
+                  <!-- Warning Modal -->
+                  <div class="component-list-item gap-2">
+                    <span
+                      class="component-title"
+                      style="
+                        background-color: #ffc107;
+                        color: #000;
+                        padding: 2px 8px;
+                        border-radius: 4px;
+                      "
+                    >
+                      Warning Modal
+                    </span>
+                    <button
+                      class="copy-btn"
+                      data-copy='<button class="aash-btn aash-btn-contained aash-btn-warning aash-btn-md" data-toggle="aash-modal" data-target="#warningModal">Warning</button>'
+                    >
+                      <i class="fas fa-copy"></i> Copy Button
+                    </button>
+                    <button
+                      class="copy-btn"
+                      data-copy='<div id="warningModal" class="aash-modal">
+  <div class="aash-modal-dialog">
+    <div class="aash-modal-header bg-warning">
+      Modal Title
+      <button class="btn-close" data-close="aash-modal">✖</button>
+    </div>
+    <div class="aash-modal-body">
+      <p>Warning modal content here...</p>
+    </div>
+    <div class="aash-modal-footer">
+      <button class="aash-btn aash-btn-contained aash-btn-error" data-close="aash-modal">Close</button>
+      <button class="aash-btn aash-btn-contained aash-btn-success">Save</button>
+    </div>
+  </div>
+</div>'
+                    >
+                      <i class="fas fa-copy"></i> Copy Modal
+                    </button>
+                  </div>
+
+                  <!-- Danger Modal -->
+                  <div class="component-list-item gap-2">
+                    <span
+                      class="component-title"
+                      style="
+                        background-color: #dc3545;
+                        color: #fff;
+                        padding: 2px 8px;
+                        border-radius: 4px;
+                      "
+                    >
+                      Danger Modal
+                    </span>
+                    <button
+                      class="copy-btn"
+                      data-copy='<button class="aash-btn aash-btn-contained aash-btn-error aash-btn-md" data-toggle="aash-modal" data-target="#dangerModal">Danger</button>'
+                    >
+                      <i class="fas fa-copy"></i> Copy Button
+                    </button>
+                    <button
+                      class="copy-btn"
+                      data-copy='<div id="dangerModal" class="aash-modal">
+  <div class="aash-modal-dialog">
+    <div class="aash-modal-header bg-error">
+      Modal Title
+      <button class="btn-close" data-close="aash-modal">✖</button>
+    </div>
+    <div class="aash-modal-body">
+      <p>Danger modal content here...</p>
+    </div>
+    <div class="aash-modal-footer">
+      <button class="aash-btn aash-btn-contained aash-btn-error" data-close="aash-modal">Close</button>
+      <button class="aash-btn aash-btn-contained aash-btn-success">Save</button>
+    </div>
+  </div>
+</div>'
+                    >
+                      <i class="fas fa-copy"></i> Copy Modal
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Demo (Click button to open same color modal) -->
+                <div class="component-demo">
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-primary aash-btn-md"
+                    data-toggle="aash-modal"
+                    data-target="#primaryModal"
+                  >
+                    Primary
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-success aash-btn-md"
+                    data-toggle="aash-modal"
+                    data-target="#successModal"
+                  >
+                    Success
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-info aash-btn-md"
+                    data-toggle="aash-modal"
+                    data-target="#infoModal"
+                  >
+                    Info
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-warning aash-btn-md"
+                    data-toggle="aash-modal"
+                    data-target="#warningModal"
+                  >
+                    Warning
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-error aash-btn-md"
+                    data-toggle="aash-modal"
+                    data-target="#dangerModal"
+                  >
+                    Danger
+                  </button>
+                </div>
+
+                <!-- Modals -->
+                <div id="primaryModal" class="aash-modal">
+                  <div class="aash-modal-dialog">
+                    <div class="aash-modal-header bg-primary">
+                      Primary Modal
+                      <button class="btn-close" data-close="aash-modal">
+                        ✖
+                      </button>
+                    </div>
+                    <div class="aash-modal-body">
+                      <p>This is the Primary Modal content.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="successModal" class="aash-modal">
+                  <div class="aash-modal-dialog">
+                    <div class="aash-modal-header bg-success">
+                      Success Modal
+                      <button class="btn-close" data-close="aash-modal">
+                        ✖
+                      </button>
+                    </div>
+                    <div class="aash-modal-body">
+                      <p>This is the Success Modal content.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="infoModal" class="aash-modal">
+                  <div class="aash-modal-dialog">
+                    <div class="aash-modal-header bg-info">
+                      Info Modal
+                      <button class="btn-close" data-close="aash-modal">
+                        ✖
+                      </button>
+                    </div>
+                    <div class="aash-modal-body">
+                      <p>This is the Info Modal content.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="warningModal" class="aash-modal">
+                  <div class="aash-modal-dialog">
+                    <div class="aash-modal-header bg-warning">
+                      Warning Modal
+                      <button class="btn-close" data-close="aash-modal">
+                        ✖
+                      </button>
+                    </div>
+                    <div class="aash-modal-body">
+                      <p>This is the Warning Modal content.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="dangerModal" class="aash-modal">
+                  <div class="aash-modal-dialog">
+                    <div class="aash-modal-header bg-error">
+                      Danger Modal
+                      <button class="btn-close" data-close="aash-modal">
+                        ✖
+                      </button>
+                    </div>
+                    <div class="aash-modal-body">
+                      <p>This is the Danger Modal content.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Toast Section -->
+          <section id="toasts" class="component-section">
+            <h2 class="section-title">
+              <i class="fas fa-bell"></i>
+              Toasts
+            </h2>
+            <div class="row">
+              <div class="col-md-12">
+                <!-- Toast Notifications -->
+                <h4 class="mt-4">Toasts</h4>
+
+                <!-- Success Toasts -->
+                <h5 style="color: #198754">Success Toasts</h5>
+                <div class="component-list">
+                  <div class="component-list-item">
+                    <span class="component-title">Top Left</span>
+                    <button
+                      class="copy-btn"
+                      data-copy="showToast('Success message!', 'success', 4000, 'top-left')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Top Right</span>
+                    <button
+                      class="copy-btn"
+                      data-copy="showToast('Success message!', 'success', 4000, 'top-right')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Top Center</span>
+                    <button
+                      class="copy-btn"
+                      data-copy="showToast('Success message!', 'success', 4000, 'top-center')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Bottom Left</span>
+                    <button
+                      class="copy-btn"
+                      data-copy="showToast('Success message!', 'success', 4000, 'bottom-left')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Bottom Right</span>
+                    <button
+                      class="copy-btn"
+                      data-copy="showToast('Success message!', 'success', 4000, 'bottom-right')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Bottom Center</span>
+                    <button
+                      class="copy-btn"
+                      data-copy="showToast('Success message!', 'success', 4000, 'bottom-center')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                </div>
+                <div class="component-demo" style="margin: 10px 0">
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-success"
+                    onclick="showToast('Success message!', 'success', 4000, 'top-left')"
+                  >
+                    Top Left
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-success"
+                    onclick="showToast('Success message!', 'success', 4000, 'top-right')"
+                  >
+                    Top Right
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-success"
+                    onclick="showToast('Success message!', 'success', 4000, 'top-center')"
+                  >
+                    Top Center
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-success"
+                    onclick="showToast('Success message!', 'success', 4000, 'bottom-left')"
+                  >
+                    Bottom Left
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-success"
+                    onclick="showToast('Success message!', 'success', 4000, 'bottom-right')"
+                  >
+                    Bottom Right
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-success"
+                    onclick="showToast('Success message!', 'success', 4000, 'bottom-center')"
+                  >
+                    Bottom Center
+                  </button>
+                </div>
+
+                <!-- Info Toasts -->
+                <h5 style="color: #0dcaf0">Info Toasts</h5>
+                <div class="component-list">
+                  <div class="component-list-item">
+                    <span class="component-title">Top Left</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Info note!', 'info', 4000, 'top-left')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Top Right</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Info note!', 'info', 4000, 'top-right')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Top Center</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Info note!', 'info', 4000, 'top-center')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Bottom Left</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Info note!', 'info', 4000, 'bottom-left')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Bottom Right</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Info note!', 'info', 4000, 'bottom-right')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Bottom Center</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Info note!', 'info', 4000, 'bottom-center')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                </div>
+                <div class="component-demo" style="margin: 10px 0">
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-info"
+                    onclick="showToast('Info note!', 'info', 4000, 'top-left')"
+                  >
+                    Top Left
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-info"
+                    onclick="showToast('Info note!', 'info', 4000, 'top-right')"
+                  >
+                    Top Right
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-info"
+                    onclick="showToast('Info note!', 'info', 4000, 'top-center')"
+                  >
+                    Top Center
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-info"
+                    onclick="showToast('Info note!', 'info', 4000, 'bottom-left')"
+                  >
+                    Bottom Left
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-info"
+                    onclick="showToast('Info note!', 'info', 4000, 'bottom-right')"
+                  >
+                    Bottom Right
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-info"
+                    onclick="showToast('Info note!', 'info', 4000, 'bottom-center')"
+                  >
+                    Bottom Center
+                  </button>
+                </div>
+
+                <!-- Warning Toasts -->
+                <h5 style="color: #ffc107">Warning Toasts</h5>
+                <div class="component-list">
+                  <div class="component-list-item">
+                    <span class="component-title">Top Left</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Warning alert!', 'warning', 4000, 'top-left')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Top Right</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Warning alert!', 'warning', 4000, 'top-right')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Top Center</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Warning alert!', 'warning', 4000, 'top-center')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Bottom Left</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Warning alert!', 'warning', 4000, 'bottom-left')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Bottom Right</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Warning alert!', 'warning', 4000, 'bottom-right')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Bottom Center</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Warning alert!', 'warning', 4000, 'bottom-center')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                </div>
+                <div class="component-demo" style="margin: 10px 0">
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-warning"
+                    onclick="showToast('Warning alert!', 'warning', 4000, 'top-left')"
+                  >
+                    Top Left
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-warning"
+                    onclick="showToast('Warning alert!', 'warning', 4000, 'top-right')"
+                  >
+                    Top Right
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-warning"
+                    onclick="showToast('Warning alert!', 'warning', 4000, 'top-center')"
+                  >
+                    Top Center
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-warning"
+                    onclick="showToast('Warning alert!', 'warning', 4000, 'bottom-left')"
+                  >
+                    Bottom Left
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-warning"
+                    onclick="showToast('Warning alert!', 'warning', 4000, 'bottom-right')"
+                  >
+                    Bottom Right
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-warning"
+                    onclick="showToast('Warning alert!', 'warning', 4000, 'bottom-center')"
+                  >
+                    Bottom Center
+                  </button>
+                </div>
+
+                <!-- Error Toasts -->
+                <h5 style="color: #dc3545">Error Toasts</h5>
+                <div class="component-list">
+                  <div class="component-list-item">
+                    <span class="component-title">Top Left</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Error happened!', 'error', 4000, 'top-left')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Top Right</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Error happened!', 'error', 4000, 'top-right')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Top Center</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Error happened!', 'error', 4000, 'top-center')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Bottom Left</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Error happened!', 'error', 4000, 'bottom-left')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Bottom Right</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Error happened!', 'error', 4000, 'bottom-right')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                  <div class="component-list-item">
+                    <span class="component-title">Bottom Center</span
+                    ><button
+                      class="copy-btn"
+                      data-copy="showToast('Error happened!', 'error', 4000, 'bottom-center')"
+                    >
+                      <i class="fas fa-copy"></i> Copy
+                    </button>
+                  </div>
+                </div>
+                <div class="component-demo" style="margin: 10px 0">
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-error"
+                    onclick="showToast('Error happened!', 'error', 4000, 'top-left')"
+                  >
+                    Top Left
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-error"
+                    onclick="showToast('Error happened!', 'error', 4000, 'top-right')"
+                  >
+                    Top Right
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-error"
+                    onclick="showToast('Error happened!', 'error', 4000, 'top-center')"
+                  >
+                    Top Center
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-error"
+                    onclick="showToast('Error happened!', 'error', 4000, 'bottom-left')"
+                  >
+                    Bottom Left
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-error"
+                    onclick="showToast('Error happened!', 'error', 4000, 'bottom-right')"
+                  >
+                    Bottom Right
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-error"
+                    onclick="showToast('Error happened!', 'error', 4000, 'bottom-center')"
+                  >
+                    Bottom Center
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <!-- Uploader file section -->
           <section id="uploaders" class="component-section">
             <h2 class="section-title">
@@ -2771,7 +3635,7 @@ Left
                     </button>
                   </div>
                 </div>
-                <div class="component-demo">
+                <div class="component-demo mt-3">
                   <div class="upload-group">
                     <div class="upload-box" id="docBox">
                       <label class="upload-label">
@@ -2813,7 +3677,7 @@ Left
                     </button>
                   </div>
                 </div>
-                <div class="component-demo">
+                <div class="component-demo mt-3">
                   <div class="upload-group">
                     <div class="upload-box" id="docBox">
                       <label class="upload-label">
@@ -2854,7 +3718,7 @@ Left
                     </button>
                   </div>
                 </div>
-                <div class="component-demo">
+                <div class="component-demo mt-3">
                   <div class="upload-group">
                     <div class="upload-box" id="imgBox">
                       <label class="upload-label">
@@ -2894,7 +3758,7 @@ Left
                     </button>
                   </div>
                 </div>
-                <div class="component-demo">
+                <div class="component-demo mt-3">
                   <div class="upload-group">
                     <div class="upload-box" id="imgBox">
                       <label class="upload-label">
@@ -2934,7 +3798,7 @@ Left
                     </button>
                   </div>
                 </div>
-                <div class="component-demo">
+                <div class="component-demo mt-3">
                   <div class="upload-group">
                     <div class="upload-box" id="videoBox">
                       <label class="upload-label">
@@ -2953,10 +3817,606 @@ Left
             </div>
           </section>
 
+          <!-- BootBox Section -->
+          <section id="bootbox" class="component-section">
+            <h2 class="section-title">
+              <i class="fas fa-window-maximize"></i>
+              AashBox Modals
+            </h2>
+            <div class="row">
+              <div class="col-md-12">
+                <h4 class="mt-4">AashBox Modal Demo</h4>
+
+                <!-- Alert Modal -->
+                <div class="component-list-item">
+                  <span class="component-title">AashBox Alert</span>
+                  <button
+                    class="copy-btn"
+                    data-copy="AashBox.alert({title:'Alert!', message:'This is an alert example!', callback:()=>console.log('Alert closed')})"
+                  >
+                    <i class="fas fa-copy"></i> Copy
+                  </button>
+                </div>
+                <div class="component-demo" style="margin: 10px 0">
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-success"
+                    onclick="AashBox.alert({title:'Alert!', message:'This is an alert example!', callback:()=>console.log('Alert closed')})"
+                  >
+                    Show Alert
+                  </button>
+                </div>
+
+                <!-- Confirm Modal -->
+                <div class="component-list-item">
+                  <span class="component-title">AashBox Confirm</span>
+                  <button
+                    class="copy-btn"
+                    data-copy="AashBox.confirm({title:'Confirm Action', message:'Are you sure?', confirmLabel:'Yes', cancelLabel:'No', callback:(res)=>console.log('Confirm:',res)})"
+                  >
+                    <i class="fas fa-copy"></i> Copy
+                  </button>
+                </div>
+                <div class="component-demo" style="margin: 10px 0">
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-info"
+                    onclick="AashBox.confirm({title:'Confirm Action', message:'Are you sure?', confirmLabel:'Yes', cancelLabel:'No', callback:(res)=>console.log('Confirm:',res)})"
+                  >
+                    Show Confirm
+                  </button>
+                </div>
+
+                <!-- Prompt Modal -->
+                <div class="component-list-item">
+                  <span class="component-title">AashBox Prompt</span>
+                  <button
+                    class="copy-btn"
+                    data-copy="AashBox.prompt({
+    title:'User Form',
+    confirmLabel:'Submit',
+    cancelLabel:'Cancel',
+    fields:[
+    {label:'Name', name:'username', inputType:'text', required:true, minLength:3},
+    {label:'Email', name:'email', inputType:'email', required:true, pattern:'^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$'},
+    {label:'Country', name:'country', inputType:'select', required:true, inputOptions:[{text:'Choose...',value:''},{text:'India',value:'IN'},{text:'USA',value:'US'}]},
+    {label:'Gender', name:'gender', inputType:'radio', required:true, inputOptions:[{text:'Male',value:'M'},{text:'Female',value:'F'}]},
+    {label:'Hobbies', name:'hobbies', inputType:'checkbox', inputOptions:[{text:'Music',value:'music'},{text:'Sports',value:'sports'}]}
+    ],
+    callback:(values)=>console.log('Prompt result:',values)
+    })"
+                  >
+                    <i class="fas fa-copy"></i> Copy
+                  </button>
+                </div>
+                <div class="component-demo" style="margin: 10px 0">
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-warning"
+                    onclick="AashBox.prompt({
+            title:'User Form',
+            confirmLabel:'Submit',
+            cancelLabel:'Cancel',
+            fields:[
+              {label:'Name', name:'username', inputType:'text', required:true, minLength:3},
+              {label:'Email', name:'email', inputType:'email', required:true, pattern:'^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$'},
+              {label:'Country', name:'country', inputType:'select', required:true, inputOptions:[{text:'Choose...',value:''},{text:'India',value:'IN'},{text:'USA',value:'US'}]},
+              {label:'Gender', name:'gender', inputType:'radio', required:true, inputOptions:[{text:'Male',value:'M'},{text:'Female',value:'F'}]},
+              {label:'Hobbies', name:'hobbies', inputType:'checkbox', inputOptions:[{text:'Music',value:'music'},{text:'Sports',value:'sports'}]}
+            ],
+            callback:(values)=>console.log('Prompt result:',values)
+          })"
+                  >
+                    Show Prompt
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="flexbox" class="component-section">
+            <h2 class="section-title">
+              <i class="fas fa-th-large"></i>
+              Flexbox Utilities
+            </h2>
+            <div class="row">
+              <div class="col-md-12">
+                <!-- 1. Display -->
+                <h2>1. Display</h2>
+                <p class="desc">
+                  <code>.d-flex</code>, <code>.d-inline-flex</code>,
+                  <code>.d-flex-inherit</code>
+                </p>
+                <div class="demo d-flex gap-2">
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    Item 1
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    Item 2
+                  </button>
+                </div>
+                <pre><code>&lt;div class="d-flex"&gt;...&lt;/div&gt;</code></pre>
+
+                <!-- 2. Flex Direction -->
+                <h2 class="mt-2">2. Flex Direction</h2>
+                <p class="desc">
+                  <code>.flex-row</code>, <code>.flex-column</code>,
+                  <code>.flex-row-reverse</code>,
+                  <code>.flex-column-reverse</code>
+                </p>
+                <div class="demo d-flex flex-column gap-2">
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    Item A
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    Item B
+                  </button>
+                </div>
+                <pre><code>&lt;div class="d-flex flex-column"&gt;...&lt;/div&gt;</code></pre>
+
+                <!-- 3. Wrapping -->
+                <h2>3. Wrapping</h2>
+                <p class="desc">
+                  <code>.flex-wrap</code>, <code>.flex-nowrap</code>,
+                  <code>.flex-wrap-reverse</code>
+                </p>
+                <div class="demo d-flex flex-wrap gap-2">
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    1
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    2
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    3
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    4
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    5
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    6
+                  </button>
+                </div>
+                <pre><code>&lt;div class="d-flex flex-wrap"&gt;...&lt;/div&gt;</code></pre>
+
+                <!-- 4. Justify Content -->
+                <h2>4. Justify Content</h2>
+                <p class="desc">
+                  <code>.justify-start</code>, <code>.justify-center</code>,
+                  <code>.justify-end</code>, <code>.justify-between</code>,
+                  <code>.justify-around</code>, <code>.justify-evenly</code>
+                </p>
+                <div class="demo d-flex justify-between">
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    A
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    B
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    C
+                  </button>
+                </div>
+                <pre><code>&lt;div class="d-flex justify-between"&gt;...&lt;/div&gt;</code></pre>
+
+                <!-- 5. Align Items -->
+                <h2>5. Align Items</h2>
+                <p class="desc">
+                  <code>.items-start</code>, <code>.items-center</code>,
+                  <code>.items-end</code>, <code>.items-baseline</code>,
+                  <code>.items-stretch</code>
+                </p>
+                <div class="demo d-flex items-center" style="height: 80px">
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    One
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary mx-2"
+                    style="height: 50px"
+                  >
+                    Two
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    Three
+                  </button>
+                </div>
+                <pre><code>&lt;div class="d-flex items-center"&gt;...&lt;/div&gt;</code></pre>
+
+                <!-- 6. Align Content -->
+                <h2>6. Align Content</h2>
+                <p class="desc">
+                  <code>.content-start</code>, <code>.content-center</code>,
+                  <code>.content-end</code>, <code>.content-between</code>,
+                  <code>.content-around</code>, <code>.content-stretch</code>
+                </p>
+                <div
+                  class="demo d-flex flex-wrap content-between gap-2"
+                  style="height: 120px"
+                >
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    1
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    2
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    3
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    4
+                  </button>
+                </div>
+                <pre><code>&lt;div class="d-flex flex-wrap content-between"&gt;...&lt;/div&gt;</code></pre>
+
+                <!-- 7. Align Self -->
+                <h2>7. Align Self</h2>
+                <p class="desc">
+                  <code>.self-start</code>, <code>.self-center</code>,
+                  <code>.self-end</code>, <code>.self-stretch</code>
+                </p>
+                <div class="demo d-flex gap-2" style="height: 100px">
+                  <button
+                    class="self-start aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    A
+                  </button>
+                  <button
+                    class="self-center aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    B
+                  </button>
+                  <button
+                    class="self-end aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    C
+                  </button>
+                </div>
+                <pre><code>&lt;div class="d-flex"&gt;
+  &lt;div class="self-start"&gt;A&lt;/div&gt;
+  &lt;div class="self-center"&gt;B&lt;/div&gt;
+  &lt;div class="self-end"&gt;C&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                <!-- 8. Gap -->
+                <h2>8. Gap</h2>
+                <p class="desc">
+                  <code>.gap-1</code> → 4px, <code>.gap-2</code> → 8px,
+                  <code>.gap-3</code> → 12px, etc.
+                </p>
+                <div class="demo d-flex gap-3">
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    X
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    Y
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    Z
+                  </button>
+                </div>
+                <pre><code>&lt;div class="d-flex gap-3"&gt;...&lt;/div&gt;</code></pre>
+
+                <!-- 9. Spacing single-axis -->
+                <h2>9. Row & Column Gap</h2>
+                <p class="desc">
+                  <code>.gx-*</code> for column gap, <code>.gy-*</code> for row
+                  gap.
+                </p>
+                <div
+                  class="demo d-flex flex-wrap gx-3 gy-2"
+                  style="width: 200px"
+                >
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    1
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    2
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    3
+                  </button>
+                  <button
+                    class="aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    4
+                  </button>
+                </div>
+                <pre><code>&lt;div class="d-flex flex-wrap gx-3 gy-2"&gt;...&lt;/div&gt;</code></pre>
+
+                <!-- 10. Flex sizing -->
+                <h2>10. Flex Sizing</h2>
+                <p class="desc">
+                  <code>.flex-0</code>, <code>.flex-1</code>,
+                  <code>.flex-auto</code>, <code>.flex-grow-*</code>,
+                  <code>.flex-shrink-*</code>
+                </p>
+                <div class="demo d-flex gap-2">
+                  <button
+                    class="flex-1 aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    Grow
+                  </button>
+                  <button
+                    class="flex-0 aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    Fixed
+                  </button>
+                </div>
+                <pre><code>&lt;div class="d-flex"&gt;
+  &lt;div class="flex-1"&gt;Grow&lt;/div&gt;
+  &lt;div class="flex-0"&gt;Fixed&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                <!-- 11. Flex Basis -->
+                <h2>11. Flex Basis</h2>
+                <p class="desc">
+                  <code>.basis-25</code>, <code>.basis-50</code>,
+                  <code>.basis-75</code>, etc.
+                </p>
+                <div class="demo d-flex gap-2">
+                  <button
+                    class="basis-25 aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    25%
+                  </button>
+                  <button
+                    class="basis-50 aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    50%
+                  </button>
+                  <button
+                    class="basis-25 aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    25%
+                  </button>
+                </div>
+                <pre><code>&lt;div class="d-flex"&gt;
+  &lt;div class="basis-25"&gt;25%&lt;/div&gt;
+  &lt;div class="basis-50"&gt;50%&lt;/div&gt;
+  &lt;div class="basis-25"&gt;25%&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                <!-- 12. Order -->
+                <h2>12. Order</h2>
+                <p class="desc">
+                  <code>.order-first</code>, <code>.order-last</code>,
+                  <code>.order-1</code>, <code>.order-2</code>, etc.
+                </p>
+                <div class="demo d-flex gap-2">
+                  <button
+                    class="order-3 aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    1
+                  </button>
+                  <button
+                    class="order-1 aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    2
+                  </button>
+                  <button
+                    class="order-2 aash-btn aash-btn-contained aash-btn-secondary"
+                  >
+                    3
+                  </button>
+                </div>
+                <pre><code>&lt;div class="d-flex"&gt;
+  &lt;div class="order-3"&gt;1&lt;/div&gt;
+  &lt;div class="order-1"&gt;2&lt;/div&gt;
+  &lt;div class="order-2"&gt;3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                <!-- Margin -->
+                <div class="utility-block">
+                  <h3>Margin (All sides)</h3>
+                  <pre><code>.m-0 { margin: 0px }
+.m-1 { margin: 4px }
+.m-2 { margin: 8px }
+.m-3 { margin: 12px }
+.m-4 { margin: 16px }
+.m-5 { margin: 24px }</code></pre>
+                </div>
+
+                <!-- Margin Top -->
+                <div class="utility-block">
+                  <h3>Margin Top</h3>
+                  <pre><code>.mt-0 { margin-top: 0px }
+.mt-1 { margin-top: 4px }
+.mt-2 { margin-top: 8px }
+.mt-3 { margin-top: 12px }
+.mt-4 { margin-top: 16px }
+.mt-5 { margin-top: 24px }</code></pre>
+                </div>
+
+                <!-- Margin Right -->
+                <div class="utility-block">
+                  <h3>Margin Right (End)</h3>
+                  <pre><code>.me-0 { margin-right: 0px }
+.me-1 { margin-right: 4px }
+.me-2 { margin-right: 8px }
+.me-3 { margin-right: 12px }
+.me-4 { margin-right: 16px }
+.me-5 { margin-right: 24px }</code></pre>
+                </div>
+
+                <!-- Margin Bottom -->
+                <div class="utility-block">
+                  <h3>Margin Bottom</h3>
+                  <pre><code>.mb-0 { margin-bottom: 0px }
+.mb-1 { margin-bottom: 4px }
+.mb-2 { margin-bottom: 8px }
+.mb-3 { margin-bottom: 12px }
+.mb-4 { margin-bottom: 16px }
+.mb-5 { margin-bottom: 24px }</code></pre>
+                </div>
+
+                <!-- Margin Left -->
+                <div class="utility-block">
+                  <h3>Margin Left (Start)</h3>
+                  <pre><code>.ms-0 { margin-left: 0px }
+.ms-1 { margin-left: 4px }
+.ms-2 { margin-left: 8px }
+.ms-3 { margin-left: 12px }
+.ms-4 { margin-left: 16px }
+.ms-5 { margin-left: 24px }</code></pre>
+                </div>
+
+                <!-- Margin Axis -->
+                <div class="utility-block">
+                  <h3>Margin Axis</h3>
+                  <pre><code>.mx-0 { margin-left: 0px; margin-right: 0px }
+.mx-1 { margin-left: 4px; margin-right: 4px }
+.mx-2 { margin-left: 8px; margin-right: 8px }
+.mx-3 { margin-left: 12px; margin-right: 12px }
+.mx-4 { margin-left: 16px; margin-right: 16px }
+.mx-5 { margin-left: 24px; margin-right: 24px }
+
+.my-0 { margin-top: 0px; margin-bottom: 0px }
+.my-1 { margin-top: 4px; margin-bottom: 4px }
+.my-2 { margin-top: 8px; margin-bottom: 8px }
+.my-3 { margin-top: 12px; margin-bottom: 12px }
+.my-4 { margin-top: 16px; margin-bottom: 16px }
+.my-5 { margin-top: 24px; margin-bottom: 24px }</code></pre>
+                </div>
+
+                <!-- Padding -->
+                <div class="utility-block">
+                  <h3>Padding (All sides)</h3>
+                  <pre><code>.p-0 { padding: 0px }
+.p-1 { padding: 4px }
+.p-2 { padding: 8px }
+.p-3 { padding: 12px }
+.p-4 { padding: 16px }
+.p-5 { padding: 24px }</code></pre>
+                </div>
+
+                <!-- Padding Top -->
+                <div class="utility-block">
+                  <h3>Padding Top</h3>
+                  <pre><code>.pt-0 { padding-top: 0px }
+.pt-1 { padding-top: 4px }
+.pt-2 { padding-top: 8px }
+.pt-3 { padding-top: 12px }
+.pt-4 { padding-top: 16px }
+.pt-5 { padding-top: 24px }</code></pre>
+                </div>
+
+                <!-- Padding Right -->
+                <div class="utility-block">
+                  <h3>Padding Right (End)</h3>
+                  <pre><code>.pe-0 { padding-right: 0px }
+.pe-1 { padding-right: 4px }
+.pe-2 { padding-right: 8px }
+.pe-3 { padding-right: 12px }
+.pe-4 { padding-right: 16px }
+.pe-5 { padding-right: 24px }</code></pre>
+                </div>
+
+                <!-- Padding Bottom -->
+                <div class="utility-block">
+                  <h3>Padding Bottom</h3>
+                  <pre><code>.pb-0 { padding-bottom: 0px }
+.pb-1 { padding-bottom: 4px }
+.pb-2 { padding-bottom: 8px }
+.pb-3 { padding-bottom: 12px }
+.pb-4 { padding-bottom: 16px }
+.pb-5 { padding-bottom: 24px }</code></pre>
+                </div>
+
+                <!-- Padding Left -->
+                <div class="utility-block">
+                  <h3>Padding Left (Start)</h3>
+                  <pre><code>.ps-0 { padding-left: 0px }
+.ps-1 { padding-left: 4px }
+.ps-2 { padding-left: 8px }
+.ps-3 { padding-left: 12px }
+.ps-4 { padding-left: 16px }
+.ps-5 { padding-left: 24px }</code></pre>
+                </div>
+
+                <!-- Padding Axis -->
+                <div class="utility-block">
+                  <h3>Padding Axis</h3>
+                  <pre><code>.px-0 { padding-left: 0px; padding-right: 0px }
+.px-1 { padding-left: 4px; padding-right: 4px }
+.px-2 { padding-left: 8px; padding-right: 8px }
+.px-3 { padding-left: 12px; padding-right: 12px }
+.px-4 { padding-left: 16px; padding-right: 16px }
+.px-5 { padding-left: 24px; padding-right: 24px }
+
+.py-0 { padding-top: 0px; padding-bottom: 0px }
+.py-1 { padding-top: 4px; padding-bottom: 4px }
+.py-2 { padding-top: 8px; padding-bottom: 8px }
+.py-3 { padding-top: 12px; padding-bottom: 12px }
+.py-4 { padding-top: 16px; padding-bottom: 16px }
+.py-5 { padding-top: 24px; padding-bottom: 24px }</code></pre>
+                </div>
+              </div>
+            </div>
+          </section>
+
           <!-- Additional sections for all other components would follow the same pattern -->
 
           <div class="text-center mt-3 mb-3">
             <p>Scroll down or use the sidebar to explore more components</p>
+          </div>
+          <div class="text-center mt-3 mb-3">
+            <p class="mb-1 fw-bold">
+              <span id="yearRange"></span> •
+              <span class="text-gradient">Aashdit Technologies</span>
+            </p>
+            <small class="text-muted">
+              Developed by <strong>Ajay Manasingh</strong>
+            </small>
           </div>
         </div>
       </main>
@@ -2968,6 +4428,64 @@ Left
       <span>Code copied to clipboard!</span>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script>
+      window.addEventListener("load", () => {
+        const orbit = document.querySelector(".orbit circle");
+        const tl = gsap.timeline();
+
+        // Animate logo pop in
+        tl.from(".logos img", {
+          scale: 0,
+          duration: 0.8,
+          ease: "back.out(1.7)",
+        });
+
+        // Animate orbit circle draw
+        tl.to(
+          orbit,
+          {
+            strokeDashoffset: 0,
+            duration: 1.5,
+            ease: "power2.out",
+          },
+          "-=0.3"
+        );
+
+        // Animate company name fade/slide
+        tl.from(
+          ".company",
+          {
+            y: 30,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power3.out",
+          },
+          "-=0.2"
+        );
+
+        // Animate byline
+        tl.from(
+          ".byline",
+          {
+            opacity: 0,
+            duration: 0.6,
+          },
+          "-=0.2"
+        );
+
+        // Exit loader after animation
+        tl.to("#loader", {
+          opacity: 0,
+          duration: 0.8,
+          delay: 1,
+          onComplete: () => {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("content").style.display = "block";
+          },
+        });
+      });
+    </script>
     <script>
       // Mobile Menu Toggle
       const menuToggle = document.getElementById("menuToggle");
@@ -3081,6 +4599,12 @@ Left
         }
       }, 1000);
     </script>
+    <script>
+      document.getElementById(
+        "yearRange"
+      ).textContent = `© ${new Date().getFullYear()}`;
+    </script>
     <script src="https://cdn.jsdelivr.net/gh/customLibrary/aashdit-technologies@main/aashdit.min.js"></script>
+    <!-- <script src="./aashdit.min.js"></script> -->
   </body>
 </html>
